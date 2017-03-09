@@ -14,6 +14,8 @@ import com.github.cunvoas.iam.service.ServiceIamRessource;
 import com.github.cunvoas.iam.service.mapper.MapperHelper;
 
 public class TestServiceIamRessourceImpl {
+    int genCall=0;
+    int nodeCount=0;
     
     private ServiceIamRessource tested;
     
@@ -50,8 +52,6 @@ public class TestServiceIamRessourceImpl {
         
     }
 
-    int genCall=0;
-    int nodeCount=0;
     @Test
     public void testComputeIntervalPerf() {
         long start;

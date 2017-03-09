@@ -26,8 +26,6 @@ public class Valeur implements Serializable {
     private String valeur;
     private List<RessourceValeur> ressourceValues;
 
-    public Valeur() {
-    }
     public Valeur(Integer id) {
         this.id=id;
     }

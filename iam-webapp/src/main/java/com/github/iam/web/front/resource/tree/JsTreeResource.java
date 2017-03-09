@@ -6,6 +6,16 @@ import com.github.cunvoas.iam.bo.IamRessource;
 
 
 public class JsTreeResource {
+
+    private String id;        //id
+    private String parent;    // parendId
+    private String text;    // code
+    private String icon ; //fa-folder / fa-bookmark-o
+    private JsTreeState state=new JsTreeState();
+    private JsTreeData attr=new JsTreeData();
+    
+    private String parentOrg;    // parendId original
+    private String position;    // new position
     
     /**
      * Default Constructor.
@@ -32,15 +42,6 @@ public class JsTreeResource {
         }
     }
     
-    private String id;        //id
-    private String parent;    // parendId
-    private String text;    // code
-    private String icon ; //fa-folder / fa-bookmark-o
-    private JsTreeState state=new JsTreeState();
-    private JsTreeData attr=new JsTreeData();
-    
-    private String parentOrg;    // parendId original
-    private String position;    // new position
     
     /**
      * Getter for id.

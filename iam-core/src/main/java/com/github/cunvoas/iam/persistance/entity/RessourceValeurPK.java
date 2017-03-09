@@ -16,9 +16,6 @@ public class RessourceValeurPK implements Serializable {
     private Integer rolId;
     private Integer resId;
 
-    public RessourceValeurPK() {
-    }
-
     @Column(name="rol_id", insertable=false, updatable=false, unique=true, nullable=false)
     public Integer getRolId() {
         return this.rolId;

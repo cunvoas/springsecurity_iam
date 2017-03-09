@@ -58,15 +58,21 @@ import com.github.cunvoas.iam.web.service.ServiceExcelInOut;
  */
 @Service("ServiceExcelInOut")
 public class ServiceExcelInOutImpl implements ServiceExcelInOut {
+	
+    protected static final Logger LOGGER = LoggerFactory.getLogger(ServiceExcelInOutImpl.class);
     
     private static final String JAVA_ENCODING="UTF-8";
     private static final String XL_FILE_ENCODING="Cp1252";
             
-    protected static final Logger LOGGER = LoggerFactory.getLogger(ServiceExcelInOutImpl.class);
     
     private static final String SHEET_APPLICATION = "Application";
     private static final String SHEET_RESSOURCE = "Ressource";
 
+    // constants for XL Sheet
+    private static final int RESVAL_COL_IDX=30;
+    private static final int ROLE_START_COL_IDX=5;
+    private static final int ROLE_END_COL_IDX=10;
+    
     @Autowired
     private MessageSource messages;
     
@@ -249,10 +255,6 @@ public class ServiceExcelInOutImpl implements ServiceExcelInOut {
 
     }
 
-    // constants for XL Sheet
-    private static final int RESVAL_COL_IDX=30;
-    private static final int ROLE_START_COL_IDX=5;
-    private static final int ROLE_END_COL_IDX=10;
     
     /**
      * @see com.github.cunvoas.iam.web.service.impl.ServiceExcelInOut#parse(java.io.InputStream)

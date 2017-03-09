@@ -25,10 +25,6 @@ public class Utilisateur implements Serializable {
     private String code;
     private String detail;
 
-    public Utilisateur() {
-    }
-
-
     @Id
     @SequenceGenerator(name="IAM_UTILISATEUR_ID_GENERATOR", sequenceName="seq_utilisateur")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="IAM_UTILISATEUR_ID_GENERATOR")

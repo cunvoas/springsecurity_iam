@@ -28,7 +28,7 @@ public class TestIamLdapUserMapper {
     }
 
     @Test
-    public void test01_GetSdf() {
+    public void test01GetSdf() {
         
         DateFormat sdf = IamLdapUserMapper.getSdf();
         Assert.assertEquals("format", dateFormated, sdf.format(calendar.getTime()));

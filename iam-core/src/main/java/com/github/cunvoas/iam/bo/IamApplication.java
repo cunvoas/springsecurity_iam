@@ -12,6 +12,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class IamApplication implements Serializable {
 
     private static final long serialVersionUID = -4927622773264470649L;
+
+    private static final int MAX_DISPLAY_LEN = 50;
+    
     private Integer id;
     private String code;
     private IamRessource ressources;
@@ -46,7 +49,7 @@ public class IamApplication implements Serializable {
     public String getDescription() {
         return description;
     }
-    private static final int MAX_DISPLAY_LEN = 50;
+    
     @JsonIgnore
     public String getDescriptionShort() {
         String retString = null;

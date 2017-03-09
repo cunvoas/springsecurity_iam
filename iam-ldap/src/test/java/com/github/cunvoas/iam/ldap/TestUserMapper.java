@@ -25,7 +25,7 @@ public class TestUserMapper {
      * 
      */
     @Test
-    public void test_ldapServer() {
+    public void testLdapServer() {
         int loop = 1 * 60; // minutes * 60 sec
         
         try {

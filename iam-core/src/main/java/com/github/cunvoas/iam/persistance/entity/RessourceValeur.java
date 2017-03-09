@@ -25,10 +25,6 @@ public class RessourceValeur implements Serializable {
     private Role role;
     private Valeur value;
 
-    public RessourceValeur() {
-    }
-
-
     @EmbeddedId
     public RessourceValeurPK getId() {
         return this.id;

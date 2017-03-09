@@ -378,8 +378,7 @@ public class ServiceIamRessourceImpl implements ServiceIamRessource {
     
     
     private  static void checkUniqueChildCode(List<IamRessource> listRess) throws IamException {
-        if (listRess==null || listRess.isEmpty() || listRess.size()==1) {
-        } else {
+        if (listRess!=null && !listRess.isEmpty() && listRess.size()!=1) {
             List<String> codesList = new ArrayList<String>();
             for (IamRessource iamRess : listRess) {
                 String code = iamRess.getCode();
@@ -490,7 +489,7 @@ public class ServiceIamRessourceImpl implements ServiceIamRessource {
        
         // search added node ion tree structure.
         IamRessource searched = new IamRessource();
-        searched.setId(parentId);;
+        searched.setId(parentId);
         IamRessource parent = this.findResourceInTree(savedTree, searched);
         IamRessource added = null;
         for (IamRessource child : parent.getEnfants()) {

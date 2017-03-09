@@ -47,7 +47,7 @@ public class TestServiceIamDelegationImpl {
 	}
 
 	@Test
-	public void testFind_4Delegator() {
+	public void testFind4Delegator() {
         criteria.setDelegatorUid(delegator);
         
 		List<IamDelegation> delegs = tested.find(criteria);
@@ -63,7 +63,7 @@ public class TestServiceIamDelegationImpl {
 	}
 
 	@Test
-	public void testFind_4Delegated() {
+	public void testFind4Delegated() {
         criteria.setDelegateUid(delegated);
         
 		List<IamDelegation> delegs = tested.find(criteria);

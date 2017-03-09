@@ -21,7 +21,7 @@ SET search_path = iam, pg_catalog;
 -- Data for Name: iam_application; Type: TABLE DATA; Schema: iam; Owner: -
 --
 
-INSERT INTO iam_application (app_id, app_url, app_description, app_code) VALUES (1, 'http://iam.vaubanhumanis.gie.priv', 'Identity and Access Management : Gestion des accès utilisateur', 'IAM');
+INSERT INTO iam_application (app_id, app_url, app_description, app_code) VALUES (1, 'http://iam.cunvoas.local', 'Identity and Access Management : Gestion des accès utilisateur', 'IAM');
 
 
 --

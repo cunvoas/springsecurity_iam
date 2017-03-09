@@ -40,7 +40,7 @@ public class TestSpringContext {
     }
 
     @Test
-    public void test01_application() {
+    public void test01Application() {
         Application application = applicationRepository.findOne(appId);
         Assert.assertNotNull("Application ID", application);
         Assert.assertEquals("Application ID", appId, application.getId());

@@ -1,11 +1,7 @@
 package com.github.cunvoas.iam.bo;
 
 public class IamDashboardItem {
-    
-    public IamDashboardItem(int segment) {
-        this.segment=segment;
-    }
-    
+
     // monitor segment (hour)
     private int segment;
     
@@ -14,6 +10,10 @@ public class IamDashboardItem {
     private long nbNewUser;
     private long nbNewDelegationDemand;
     private long nbAdminActivity;
+    
+    public IamDashboardItem(int segment) {
+        this.segment=segment;
+    }
     
     public void clear() {
         nbVector=0;

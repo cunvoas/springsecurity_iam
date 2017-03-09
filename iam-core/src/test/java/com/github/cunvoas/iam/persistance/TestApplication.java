@@ -44,7 +44,7 @@ public class TestApplication {
     }
 
     @Test
-    public void test01_application() {
+    public void test01Application() {
         Application application = applicationRepository.findOne(appId);
         Assert.assertNotNull("Application ID", application);
         Assert.assertEquals("Application ID", appId, application.getId());
@@ -65,7 +65,7 @@ public class TestApplication {
     }
     
     @Test
-    public void test02_ressources() {
+    public void test02Ressources() {
         List<Object[]> vals = ressourceRepository.findApplicationAllRessourceValeurs(appId, rolId);
         
         Assert.assertNotNull("RessourceValues null", vals);

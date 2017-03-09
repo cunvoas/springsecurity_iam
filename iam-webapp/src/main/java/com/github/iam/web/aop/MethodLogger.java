@@ -10,10 +10,12 @@ import org.slf4j.LoggerFactory;
 /**
  * Loggeur AOP.
  * 
- * @author Empeiria
+ * @author cunvoas
  */
 public class MethodLogger {
 
+	private static final int MAX_TRACE_DEPTH = 5;
+	  
   /**
    * Loggeur d'entr�e.
    * 
@@ -42,7 +44,6 @@ public class MethodLogger {
     }
   }
 
-  private static final int MAX_TRACE_DEPTH = 5;
   /**
    * Exception m�tier non tra�t�e.
    * @param exception l'exception m�tier

@@ -42,12 +42,12 @@ public class TestIamUserDetailsService {
     }
 
     @Test
-    public void test00_skip() {
+    public void test00Skip() {
     	Assert.assertTrue(true);
     }
     
    // @Test
-    public void test01_LoadUserByUsername() {
+    public void test01LoadUserByUsername() {
         Class[] itfs = serviceVectorIam.getClass().getInterfaces();
         List<String> listStrItfs = new ArrayList<String>();
         for (int i = 0; i < itfs.length; i++) {

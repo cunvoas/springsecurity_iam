@@ -35,15 +35,6 @@ import com.github.cunvoas.iam.ldap.IamLdapUser;
 public class IamLdapUserMapper implements ContextMapper {
     private static final Logger LOGGER = LoggerFactory.getLogger(IamLdapUserMapper.class);
 
-    /**
-     * @return
-     */
-    protected static DateFormat getSdf() {
-        //                                             20150101000000.000000Z
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss'.000000Z'");
-        return sdf;
-    }
-
     public static final String PROP_UID="uid";
     public static final String PROP_INITIALS="initials";
     public static final String PROP_FIRSTNAME="givenName";
@@ -54,6 +45,16 @@ public class IamLdapUserMapper implements ContextMapper {
     public static final String PROP_DEPARTURE="privDeparture";
     //FIXME selon structure LDAP
     public static final String PROP_ROLES="businessCategory";
+    
+    /**
+     * @return
+     */
+    protected static DateFormat getSdf() {
+        //                                             20150101000000.000000Z
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss'.000000Z'");
+        return sdf;
+    }
+
     
     
     /**

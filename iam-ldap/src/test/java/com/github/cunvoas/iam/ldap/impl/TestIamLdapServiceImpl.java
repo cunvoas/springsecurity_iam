@@ -28,7 +28,7 @@ public class TestIamLdapServiceImpl {
     private IamLdapService tested;
 
     @Test
-    public void test01_Find() {
+    public void test01Find() {
         IamLdapUser user = tested.find("jbpetit");
         Assert.assertNotNull("users found jbpetit", user);
         
@@ -61,7 +61,7 @@ public class TestIamLdapServiceImpl {
     
 
     @Test
-    public void test02_Find() {
+    public void test02Find() {
         List<IamLdapUser> users = tested.find("", null, null);
         Assert.assertNull("users", users);
         

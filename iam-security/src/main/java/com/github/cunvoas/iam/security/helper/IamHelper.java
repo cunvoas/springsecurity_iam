@@ -50,7 +50,7 @@ public abstract class IamHelper {
             sufficent =  user>=required && required>INT_INVISIBLE;
         } else {
             // en invertion, si l'utilisateur le pouvoir, on interdit
-            sufficent = !(user==required);
+            sufficent = user!=required;
         }
         
         return sufficent;

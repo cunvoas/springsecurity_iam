@@ -36,6 +36,7 @@ public class Application implements Serializable {
     private List<Role> roles;
 
     public Application() {
+    	super();
     }
 
 

@@ -28,10 +28,6 @@ public class LdapMember implements Serializable {
     private String ldapQuery;
     private Role role;
 
-    public LdapMember() {
-    }
-
-
     @Id
     @SequenceGenerator(name="IAM_LDAP_MEMBER_ID_GENERATOR", sequenceName="seq_ldap_member")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="IAM_LDAP_MEMBER_ID_GENERATOR")

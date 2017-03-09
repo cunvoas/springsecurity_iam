@@ -39,9 +39,6 @@ public class Role implements Serializable {
     private List<LdapMember> ldapMemberQuery;
     private List<RessourceValeur> ressourceValues;
     private Application application;
-    public Role() {
-    }
-
 
     @Id
     @SequenceGenerator(name="IAM_ROLE_ID_GENERATOR", sequenceName="seq_role")
