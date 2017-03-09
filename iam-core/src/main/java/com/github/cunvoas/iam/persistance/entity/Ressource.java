@@ -37,8 +37,6 @@ public class Ressource implements Serializable, Comparable<Ressource> {
     private Application application;
     private List<RessourceValeur> ressourceValues;
 
-    public Ressource() {
-    }
 
     @Id
     @SequenceGenerator(name="IAM_RESSOURCE_ID_GENERATOR", sequenceName="seq_ressource")

@@ -185,13 +185,13 @@ public class ServiceVectorIamImpl implements ServiceVectorIam {
                 populateRawRole(user, roles, null);
                 
                 // Delegation 
-                List<IamDelegation> delegations = serviceIamDelegation.findDelegatedForVector(userId);
-                if (CollectionUtils.isNotEmpty(delegations)) {
-                	for (IamDelegation iamDelegation : delegations) {
-// delegations.clear()
+//                List<IamDelegation> delegations = serviceIamDelegation.findDelegatedForVector(userId);
+//                if (CollectionUtils.isNotEmpty(delegations)) {
+//                	for (IamDelegation iamDelegation : delegations) {
+//                			delegations.clear()
 // FIXME               		populateRawRole(user, iamDelegation.getRoles(), iamDelegation);
-					}
-                }
+//					}
+//                }
                 
             } else {
                 dashBoardMonitor.incrementIamVectorRefused();

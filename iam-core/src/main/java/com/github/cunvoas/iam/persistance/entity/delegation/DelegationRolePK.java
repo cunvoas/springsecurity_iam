@@ -17,9 +17,6 @@ public class DelegationRolePK implements Serializable {
     private Integer rolId;
     private Integer delegationId;
 
-    public DelegationRolePK() {
-    }
-
     @Column(name="dlg_app_rol_rolid", insertable=false, updatable=false, nullable=false)
     public Integer getRolId() {
         return this.rolId;

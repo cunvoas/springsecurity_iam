@@ -24,10 +24,7 @@ public class IamUserDetailsService implements UserDetailsService {
     static {
         javax.net.ssl.HostnameVerifier verifier =  new javax.net.ssl.HostnameVerifier() {
             public boolean verify(String hostname, javax.net.ssl.SSLSession sslSession) {
-                if ("localhost".equals(hostname)) {
-                    return true;
-                }
-                return false;
+            	return "localhost".equals(hostname);
             }
         };
         javax.net.ssl.HttpsURLConnection.setDefaultHostnameVerifier(verifier);
