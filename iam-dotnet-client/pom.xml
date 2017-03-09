@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.github.cunvoas</groupId>
+		<artifactId>iam_parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version><!-- RELEASE -->
+	</parent>
+	<artifactId>iam-dotnet-client</artifactId>
+	<packaging>pom</packaging>
+
+    <description>
+        Purpose a .Net client.
+        https://maven-dotnet-plugin.appspot.com/index.html
+    </description>
+
+	<properties>
+		<!-- Locations of the the .Net installations (pick the one you need) -->
+		<!-- (below the default values for each dotnet version supported) -->
+		<dotnet.2.0.sdk.directory>C:/WINDOWS/Microsoft.NET/Framework/v2.0.50727</dotnet.2.0.sdk.directory>
+		<dotnet.3.5.sdk.directory>C:/WINDOWS/Microsoft.NET/Framework/v3.5</dotnet.3.5.sdk.directory>
+		<dotnet.4.0.sdk.directory>C:/WINDOWS/Microsoft.NET/Framework/v4.0.30319</dotnet.4.0.sdk.directory>
+	</properties>
+	
+	<profiles>
+		<profile>
+			<id>dotNet</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.codehaus.sonar-plugins.dotnet</groupId>
+							<artifactId>maven-dotnet-plugin</artifactId>
+							<version>1.1</version>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+				<!-- To use the plugin goals in your POM or parent POM -->
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.sonar-plugins.dotnet</groupId>
+						<artifactId>maven-dotnet-plugin</artifactId>
+						<version>1.1</version>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

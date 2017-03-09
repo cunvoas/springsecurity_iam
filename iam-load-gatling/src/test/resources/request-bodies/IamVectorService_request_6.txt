@@ -1,0 +1,10 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.iam.cunvoas.github.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:findIamRessourceByRole>
+         <userId>cunvoas</userId>
+         <applicationId>IAM</applicationId>
+         <roleId>ADMIN_IAM</roleId>
+      </ser:findIamRessourceByRole>
+   </soapenv:Body>
+</soapenv:Envelope>

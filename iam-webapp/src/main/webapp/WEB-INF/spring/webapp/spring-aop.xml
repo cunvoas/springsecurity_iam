@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+						http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+						">
+
+  <aop:aspectj-autoproxy proxy-target-class="true" />
+  
+<!-- AOP Tracker for admin actions  -->
+  <bean id="adminTracker" class="com.github.cunvoas.iam.web.aop.AdminActionTracker">
+    <property name="dashBoardMonitor" ref="DashBoardMonitor" />
+  </bean>
+  
+  
+  <!-- logging des appels aux services
+  <bean id="serviceLogger" class="com.aushopping.gestioncontenu.aop.MethodLogger" />
+   
+  <aop:config>
+    <aop:pointcut id="publicServiceMethods" expression="execution(public * com.aushopping.gestioncontenu.impl.Service*.*(..))" />
+  </aop:config>
+  <aop:config>
+    <aop:aspect id="loggingServiceAspect" ref="serviceLogger">
+      <aop:after-throwing method="logMethodThrow" pointcut-ref="publicServiceMethods" throwing="exception" />
+    </aop:aspect>
+  </aop:config>
+  
+   -->
+   
+</beans>

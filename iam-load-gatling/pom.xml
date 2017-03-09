@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.github.cunvoas</groupId>
+		<artifactId>iam_parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version><!-- RELEASE -->
+	</parent>
+	<groupId>com.github.cunvoas</groupId>
+	<artifactId>iam-load-gatling</artifactId>
+	<name>iam-load-gatling</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<gatling.version>2.0.0-M3a</gatling.version>
+		<gatling.groupPrefix>io.gatling</gatling.groupPrefix>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>excilys</id>
+			<name>Excilys Repository</name>
+			<url>http://repository.excilys.com/content/groups/public</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>excilys</id>
+			<name>Excilys Repository</name>
+			<url>http://repository.excilys.com/content/groups/public</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>${gatling.groupPrefix}.highcharts</groupId>
+			<artifactId>gatling-charts-highcharts</artifactId>
+			<version>${gatling.version}</version>
+			<scope>test</scope>
+		</dependency>
+			
+		<dependency>
+		    <groupId>com.dongxiguo</groupId>
+		    <artifactId>fastring_2.11</artifactId>
+		    <version>0.2.4</version>
+            <scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+					<skipTests>${skipITs}</skipTests>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>${gatling.groupPrefix}</groupId>
+				<artifactId>gatling-maven-plugin</artifactId>
+				<version>${gatling.version}</version>
+				<executions>
+					<execution>
+						<phase>verify</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<configDir>src/test/resources</configDir>
+							<dataFolder>src/test/resources/data</dataFolder>
+							<resultsFolder>target/gatling/results</resultsFolder>
+							<requestBodiesFolder>src/test/resources/request-bodies</requestBodiesFolder>
+							<simulationsFolder>src/test/scala</simulationsFolder>
+							<includes>
+								<include>**/Scn*.scala</include>
+								<include>**/Iam*.scala</include>
+							</includes>
+							<excludes>
+								<exclude>advanced/*.scala</exclude>
+							</excludes>
+							<!-- <noReports>false</noReports> -->
+							<!-- <reportsOnly>false</reportsOnly> -->
+							<simulationClass>test.Scn_00_All</simulationClass>
+							<!-- <jvmArgs> -->
+							<!-- <jvmArg>-DmyExtraParam=foo</jvmArg> -->
+							<!-- </jvmArgs> -->
+							<!-- <fork>true</fork> -->
+							<!-- <propagateSystemProperties>true</propagateSystemProperties> -->
+							<!-- <failOnError>true</failOnError> -->
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

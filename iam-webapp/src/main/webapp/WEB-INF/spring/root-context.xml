@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<context:annotation-config />
+    <context:component-scan base-package="com.github.cunvoas.iam" />
+    
+    <context:property-placeholder location="classpath:iam_config.properties" order="1" ignore-resource-not-found="true" ignore-unresolvable="true" local-override="true" />
+    <context:property-placeholder location="${extern.config}/iam/iam_config.properties" order="2" ignore-resource-not-found="true" ignore-unresolvable="true" local-override="true" />
+    
+	<context:property-placeholder location="classpath:iam_config_web.properties"  order="4" ignore-resource-not-found="true" ignore-unresolvable="true" local-override="true" />
+	<context:property-placeholder location="classpath:version.properties"  order="5" ignore-resource-not-found="true" ignore-unresolvable="true" local-override="true" />
+	<context:property-placeholder location="classpath:cas_config.properties"  order="6" ignore-resource-not-found="true" ignore-unresolvable="true" local-override="true" />
+	<context:property-placeholder location="classpath:ldap_config.properties"  order="7" ignore-resource-not-found="true" ignore-unresolvable="true" local-override="true" />
+	
+	
+	<bean id="appVersion" class="java.lang.String">
+		<constructor-arg>
+			<value>${app.version}</value>
+		</constructor-arg>
+	</bean>
+
+   
+	<import resource="webapp/spring-jdbc.xml" />
+	<import resource="classpath:spring/core/spring-jpa.xml" />
+	
+	<import resource="classpath:spring/ldap/spring-ldap.xml" />
+
+	<!-- Spring MVC HCI -->
+	<import resource="webapp/spring-mvc.xml" />
+	
+	
+	<!-- SOAP WS Exposure  -->
+	<import resource="webapp/spring-ws.xml" />
+	
+	<!-- Spring security with CAS and IAM UserDetail
+	<import resource="classpath:spring/spring-security-iam-local.xml" />
+	 -->
+	 <import resource="classpath:spring/spring-security-iam-local.xml" />
+	<import resource="webapp/spring-security-cas-iam.xml" />
+
+	<!-- DashBoard Scheduling -->
+	<import resource="webapp/spring-task.xml" />
+	
+	<!-- JMX Exposure -->
+	<import resource="webapp/spring-jmx.xml" />
+
+    <import resource="webapp/spring-aop.xml" />
+</beans>

@@ -1,0 +1,35 @@
+dn: m-oid=1.3.6.1.4.1.139227.2.3.2, ou=attributetypes, cn=inetorgperson, ou=schema
+objectClass: metaAttributeType
+objectClass: top
+m-oid: 1.3.6.1.4.1.139227.2.3.2
+m-name: privArrival
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.15
+m-singleValue: TRUE
+m-usage: USER_APPLICATIONS
+
+
+dn: m-oid=1.3.6.1.4.1.139227.2.3.3, ou=attributetypes, cn=inetorgperson, ou=schema
+objectClass: metaAttributeType
+objectClass: top
+m-oid: 1.3.6.1.4.1.139227.2.3.2
+m-name: privDeparture
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.15
+m-singleValue: TRUE
+m-usage: USER_APPLICATIONS
+
+dn: m-oid=1.3.6.1.4.1.139227.2.3.16, ou=attributetypes, cn=inetorgperson, ou=schema
+objectClass: metaAttributeType
+objectClass: top
+m-oid: 1.3.6.1.4.1.139227.2.3.16
+m-name: privAppRoleName
+m-syntax: 1.3.6.1.4.1.1466.115.121.1.15
+m-singleValue: FALSE
+m-usage: USER_APPLICATIONS
+
+dn: m-oid=2.16.840.1.113730.3.2.2,ou=objectClasses,cn=inetorgperson,ou=schem
+ a
+m-may: privArrival
+m-may: privDeparture
+m-may: privAppRoleName
+
+

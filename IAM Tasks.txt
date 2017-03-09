@@ -1,0 +1,86 @@
+IAM Tasks
+                               DB C  R  U  D  TU
+ JPA
+	APPLICATION                T  T  T  T  T  T                  
+	ROLE                       T  T  T  T  T              
+	RESSOURCES                 T  T  T  T  T                    
+	RESSOURCES-VALUE           T  T  T  T  T                          
+	UTILISATEUR                T  T  T  T  T                     
+	UTILISATEUR-ROLE                                             
+	UTILISATEUR-APPLICATION                                             
+	
+SERVICE
+	TREE                       -  .  T  .  .                               
+	
+WEBAPP
+	SOCLE                      -  .  T  .  .                               
+	WS                         -  .  T  .  .          
+	RS
+	
+WEBAPP TI AVEC CAS             -  .  T  .  .          
+
+
+
+
+SANDBOX
+	SPRING-INTEGRATION-LDAP (TU)	OK	
+	SPRING-DATA-JPA					OK
+	SPRING-DATA-NEO4J
+	WEBSOCKET
+	ANGULARJS
+	REQUIREJS  BOWER ?
+	JASMINE
+	
+
+FONCTIONNALITES
+	IHM ADMIN avec WEBSOCKET pour notification de modification concurrente.
+	VALIDATION JPA AUTOMATISEE
+	SERVICES SOAP et REST		SOAP seulement pour vector
+	UL/DL de config via fichier XLS		en cours de test
+	HELPER ET JSTL Spring-Security	OK
+	
+	
+	
+http://www.petrikainulainen.net/spring-data-jpa-tutorial/
+http://tomcat.apache.org/tomcat-7.0-doc/web-socket-howto.html
+http://www.neo4j.org/download_thanks?edition=community&release=2.0.0&platform=windows
+
+
+
+Certificat
+keytool -genkey -alias tomcat -keyalg RSA  -keystore D:\_SOCLE\appserver\keystore
+
+password : casiam
+
+Quels sont vos nom et prÚnom ?
+  [Unknown]:  UNVOAS Christophe
+Quel est le nom de votre unitÚ organisationnelle ?
+  [Unknown]:  perso
+Quel est le nom de votre entreprise ?
+  [Unknown]:  perso
+Quel est le nom de votre ville de rÚsidence ?
+  [Unknown]:  Lille
+Quel est le nom de votre Útat ou province ?
+  [Unknown]:  FRANCE
+Quel est le code pays Ó deux lettres pour cette unitÚ ?
+  [Unknown]:  fr
+Est-ce CN=UNVOAS Christophe, OU=Github, O=perso, L=Lille, ST=FRANCE, C=fr ?
+
+Entrez le mot de passe de la clÚ pour <tomcat>
+        (appuyez sur EntrÚe s'il s'agit du mot de passe du fichier de clÚs) : casiam
+        
+        
+-Djsse.enableSNIExtension=false
+
+
+
+
+http://stackoverflow.com/questions/13123083/cas-sslhandshakeexception-validatorexception-pkix-path-building-failed-u
+
+
+keytool -exportcert -alias tomcat -file D:\_SOCLE\appserver\casiam.crt -keystore D:\_SOCLE\appserver\keystore
+
+keytool -import -alias tomcat -file D:\_SOCLE\appserver\casiam.crt -keystore D:\_SOCLE\JDK\1.7.0_25\jre\lib\security\cacerts
+
+ keytool -list -keystore D:\_SOCLE\JDK\1.7.0_25\jre\lib\security\cacerts -alias tomcat
+        

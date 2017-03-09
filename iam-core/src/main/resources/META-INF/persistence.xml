@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence 
+	version="2.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+		http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	
+	<persistence-unit name="jpa.IAM" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		 
+		 <class>com.github.cunvoas.iam.persistance.entity.Application</class>
+		 <class>com.github.cunvoas.iam.persistance.entity.Ressource</class>
+		 <class>com.github.cunvoas.iam.persistance.entity.Role</class>
+		 <class>com.github.cunvoas.iam.persistance.entity.LdapMember</class>
+		 <class>com.github.cunvoas.iam.persistance.entity.Valeur</class>
+		 <class>com.github.cunvoas.iam.persistance.entity.RessourceValeur</class>
+		 <class>com.github.cunvoas.iam.persistance.entity.Utilisateur</class>
+		 
+         <class>com.github.cunvoas.iam.persistance.entity.delegation.Delegation</class>
+         <class>com.github.cunvoas.iam.persistance.entity.delegation.DelegationRole</class>
+         <class>com.github.cunvoas.iam.persistance.entity.delegation.DelegationHistory</class>
+         <class>com.github.cunvoas.iam.persistance.entity.delegation.state.AbstractState</class>
+         <class>com.github.cunvoas.iam.persistance.entity.delegation.state.DemandState</class>
+         <class>com.github.cunvoas.iam.persistance.entity.delegation.state.ReadState</class>
+         <class>com.github.cunvoas.iam.persistance.entity.delegation.state.AcceptedState</class>
+         <class>com.github.cunvoas.iam.persistance.entity.delegation.state.RefusedState</class>
+         <class>com.github.cunvoas.iam.persistance.entity.delegation.state.CanceledState</class>
+         <class>com.github.cunvoas.iam.persistance.entity.delegation.state.ExpiredState</class>
+         <class>com.github.cunvoas.iam.persistance.entity.delegation.state.TerminatedState</class>
+	</persistence-unit>
+	
+		 <!-- 
+		<properties>
+			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.format_sql" value="true"/>
+			<property name="hibernate.hbm2ddl.auto" value="update" /> 
+			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+			<property name="hibernate.connection.url" value="jdbc:hsqldb:mem:spring" />
+			<property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver" />
+			<property name="hibernate.connection.username" value="sa" />
+			<property name="hibernate.connection.password" value="" />
+		</properties>
+		 -->
+</persistence>

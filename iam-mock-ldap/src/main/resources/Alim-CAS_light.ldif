@@ -1,0 +1,81 @@
+dn: ou=people,dc=gie,dc=priv
+objectClass: organizationalUnit
+objectClass: top
+
+dn: cn=schema
+objectClass: top
+objectClass: ldapSubentry
+objectClass: subSchema
+objectClasses: ( 1.2.840.113549.1.9.24.2 NAME 'enterpriselPerson'
+  SUP top
+  AUXILIARY
+  MAY ( 
+    privArrival $
+    privDeparture $
+  X-ORIGIN 'RFC 2985' ) 
+
+dn: uid=cunvoas,ou=people,dc=gie,dc=priv
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: extensibleObject
+uid: cunvoas
+initials: M.
+sn: Unvoas
+givenName: Christophe
+mail: christophe.unvoas.fake.email@domain.com
+cn: Unvoas Christophe
+privArrival: 20130805000000.000000Z
+privDeparture: 20150101000000.000000Z
+userPassword: {SSHA}7EZSeHNJTMuh3nlhRptIQgVV7nKfp0iD
+businessCategory: IAM:ADMIN
+businessCategory: IAM:GEST_INFO
+businessCategory: NET_EXPAT:IAM:ADMIN
+businessCategory: NET_EXPAT:CLIENT_SANS_MANDATAIRE
+businessCategory: NET_EXPAT:CLIENT_AVEC_MANDATAIRE
+businessCategory: NET_EXPAT:MANDATAIRE_ACOMPTE
+businessCategory: NET_EXPAT:MANDATAIRE_DECLARATIF
+businessCategory: SAMPLE:READER
+businessCategory: IAM:APPLICATION_MANAGER
+businessCategory: IAM:USER_MANAGER
+businessCategory: IAM:READER
+preferredLanguage: fr
+
+dn: uid=nkondratek,ou=people,dc=gie,dc=priv
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: nkondratek
+initials: M.
+sn: Kondratek
+givenName: Nicolas
+mail: nicolas.kondratek.fake.email@domain.com
+cn: Kondratek Nicolas
+privArrival: 20120702000000.000000Z
+privDeparture: 20140101000000.000000Z
+userPassword: {SSHA}kktCZHGAiP/vmsmkGZCwLbDPRLy4q5wV
+businessCategory: IAM:GEST_INFO
+businessCategory: SAMPLE:MANAGER
+businessCategory: SAMPLE:READER
+
+
+dn: uid=jbpetit,ou=people,dc=gie,dc=priv
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: jbpetit
+initials: M.
+sn: Petit
+givenName: Jean Baptiste
+mail: jeanbaptiste.petit.fake.email@domain.com
+cn: Petit Jean Baptiste
+privArrival: 20130801000000.000000Z
+privDeparture: 20140101000000.000000Z
+userPassword: {SSHA}h2+VxYpoKlxDQagQJ7aes7Wb4tE1XS5X
+businessCategory: IAM:GEST_INFO
+businessCategory: SAMPLE:MANAGER
+businessCategory: NET_EXPAT:CLIENT_SANS_MANDATAIRE
+

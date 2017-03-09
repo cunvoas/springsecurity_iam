@@ -1,0 +1,60 @@
+dn: uid=ldapUser,ou=people,dc=gie,dc=priv
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: ldapUser
+initials: M.
+sn: Unvoas
+givenName: Christophe
+mail: fake.email@domain.com
+cn: Unvoas Christophe
+privArrival: 20130101000000.000000Z
+privDeparture: 20990101000000.000000Z
+userPassword: pwd4ldap
+
+dn: uid=cunvoas,ou=people,dc=gie,dc=priv
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: cunvoas
+initials: M.
+sn: Unvoas
+givenName: Christophe
+mail: christophe.unvoas.fake.email@domain.com
+cn: Unvoas Christophe
+privArrival: 20130805000000.000000Z
+privDeparture: 20150101000000.000000Z
+userPassword: {SSHA}7EZSeHNJTMuh3nlhRptIQgVV7nKfp0iD
+
+dn: uid=nkondratek,ou=people,dc=gie,dc=priv
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: nkondratek
+initials: M.
+sn: Kondratek
+givenName: Nicolas
+mail: nicolas.kondratek.fake.email@domain.com
+cn: Kondratek Nicolas
+privArrival: 20120702000000.000000Z
+privDeparture: 20140101000000.000000Z
+userPassword: {SSHA}kktCZHGAiP/vmsmkGZCwLbDPRLy4q5wV
+
+dn: uid=jbpetit,ou=people,dc=gie,dc=priv
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: jbpetit
+initials: M.
+sn: Petit
+givenName: Jean Baptiste
+mail: jeanbaptiste.petit.fake.email@domain.com
+cn: Petit Jean Baptiste
+privArrival: 20130801000000.000000Z
+privDeparture: 20140101000000.000000Z
+userPassword: {SSHA}h2+VxYpoKlxDQagQJ7aes7Wb4tE1XS5X
+

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" 
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="blank" template="/WEB-INF/template/core/blanck.jsp" />
+	
+	<!-- Default Main Template : to be overridden -->
+	<definition name=".mainTemplate" template="/WEB-INF/template/core/mainTemplate.jsp">
+		<!-- generic template -->
+		<put-attribute name="leftMenu" value="/WEB-INF/template/common/leftMenu.jsp" />
+		<put-attribute name="topMenu" value="/WEB-INF/template/common/topMenu.jsp" />
+		
+		<put-attribute name="editor" value="/WEB-INF/template/core/blank.jsp" />
+		
+		<!-- add extra inclusions -->
+		<put-attribute name="specificCss" value="/WEB-INF/template/core/blank.jsp" />
+		<put-attribute name="specificJs" value="/WEB-INF/template/core/blank.jsp" />
+	</definition>
+		
+	<!-- ERROR PAGE -->
+	<definition name="error" extends=".mainTemplate">
+		<put-attribute name="editor" value="/WEB-INF/template/error/err-editor.jsp" />
+	</definition>
+	
+	<!-- USE CASE DASHBOARD -->
+	<definition name="home" extends=".mainTemplate">
+		<put-attribute name="editor" value="/WEB-INF/template/home/home-editor-info.jsp" />
+		<put-attribute name="specificCss" value="/WEB-INF/template/home/cssGraph.jsp" />
+		<put-attribute name="specificJS" value="/WEB-INF/template/home/jsGraph.jsp" />
+	</definition>
+	
+	<!-- USE CASE APPLICATION -->
+	<definition name="applicationList" extends=".mainTemplate">
+		<put-attribute name="editor" value="/WEB-INF/template/application/app-editor-list.jsp" />
+		<put-attribute name="specificCss" value="/WEB-INF/template/application/cssTablesorter.jsp" />
+		<put-attribute name="specificJS" value="/WEB-INF/template/application/jsTablesorter.jsp" />
+	</definition>
+	
+	<definition name="applicationAdd" extends=".mainTemplate">
+		<put-attribute name="editor" value="/WEB-INF/template/application/app-editor-form-add.jsp" />
+	</definition>
+	
+	<definition name="applicationEdit" extends=".mainTemplate">
+		<put-attribute name="editor" value="/WEB-INF/template/application/app-editor-form.jsp" />
+	</definition>
+	
+	<definition name="applicationUpload" extends=".mainTemplate">
+		<put-attribute name="editor" value="/WEB-INF/template/application/app-editor-upload.jsp" />
+	</definition>
+	
+	<!-- USE CASE RESOURCES -->
+	<definition name="resourceTree" extends=".mainTemplate">
+		<put-attribute name="editor" value="/WEB-INF/template/resource/res-editor-tree.jsp" />
+		<put-attribute name="specificCss" value="/WEB-INF/template/resource/cssJsTree.jsp" />
+		<put-attribute name="specificJS" value="/WEB-INF/template/resource/jsJsTree.jsp" />
+	</definition>
+	<definition name="resourceValue" extends=".mainTemplate">
+		<put-attribute name="editor" value="/WEB-INF/template/resource/res-editor-value.jsp" />
+		<put-attribute name="specificCss" value="/WEB-INF/template/resource/cssJsTreeValue.jsp" />
+		<put-attribute name="specificJS" value="/WEB-INF/template/resource/jsJsTreeValue.jsp" />
+	</definition>
+	
+	<!-- USE CASE ROLES -->
+	<definition name="roleList" extends=".mainTemplate">
+		<put-attribute name="editor" value="/WEB-INF/template/role/app-role-list.jsp" />
+		<put-attribute name="specificCss" value="/WEB-INF/template/role/cssInputAutoComplete.jsp" />
+		<put-attribute name="specificJS" value="/WEB-INF/template/role/jsInputAutoComplete.jsp" />
+	</definition>
+	
+	<definition name="roleEdit" extends=".mainTemplate">
+		<put-attribute name="editor" value="/WEB-INF/template/role/app-role-form.jsp" />
+	</definition>
+	
+	<definition name="roleAdd" extends=".mainTemplate">
+		<put-attribute name="editor" value="/WEB-INF/template/role/app-role-form-add.jsp" />
+		<put-attribute name="specificCss" value="/WEB-INF/template/role/cssInputAutoComplete.jsp" />
+		<put-attribute name="specificJS" value="/WEB-INF/template/role/jsInputAutoCompleteAdd.jsp" />
+	</definition>
+	
+	
+    <!-- USE CASE DELEGATION -->
+    <definition name="delegationList" extends=".mainTemplate">
+        <put-attribute name="editor" value="/WEB-INF/template/delegation/dlg-editor-list.jsp" />
+        <put-attribute name="specificCss" value="/WEB-INF/template/application/cssTablesorter.jsp" />
+        <put-attribute name="specificJS" value="/WEB-INF/template/application/jsTablesorter.jsp" />
+    </definition>
+    
+    <definition name="delegationWkf" extends=".mainTemplate">
+        <put-attribute name="editor" value="/WEB-INF/template/delegation/dlg-editor-wkf.jsp" />
+    </definition>
+	
+</tiles-definitions>

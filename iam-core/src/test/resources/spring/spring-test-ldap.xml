@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-3.1.xsd
+">
+
+<!-- 
+http://wiki.fluxit.com.ar/display/PUBLIC/Spring+Security+embedded+LDAP
+
+http://www.dzone.com/links/r/spring_security_configure_an_embedded_ldap_server.html
+
+
+ -->
+    <context:property-placeholder location="test_ldap.properties" order="3" ignore-resource-not-found="true" ignore-unresolvable="true" local-override="true" />
+    
+    
+	<context:annotation-config />
+    <context:component-scan base-package="com.github.cunvoas.iam" />
+    
+	<security:ldap-server id="testLdapServer"
+		ldif="Alim-CAS_light.ldif" 
+		root="dc=gie,dc=priv" 
+		port="399" 
+		
+		manager-dn="uid=admin,ou=system"
+		manager-password="secret" 
+	/>
+	
+	<bean id="ldapContextSource" class="org.springframework.ldap.core.support.LdapContextSource">
+        <property name="url" value="${ldap.url}" />
+        <property name="base" value="${ldap.base}" />
+        <property name="userDn" value="${ldap.userDn}" />
+        <property name="password" value="${ldap.password}" />
+    </bean>
+
+    <bean id="ldapTemplate" class="org.springframework.ldap.core.LdapTemplate">
+        <constructor-arg ref="ldapContextSource" />
+    </bean>
+    
+	<!-- 
+	
+
+		
+		
+	<ldap-server id="appLdapServer"
+        url="ldap://myldap.example.com:389/dc=example,dc=com"
+        manager-dn="uid=admin,ou=system" manager-password="secret" />
+	 -->
+</beans>

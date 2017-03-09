@@ -1,0 +1,226 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://service.iam.cunvoas.github.com/" name="ServiceVectorIam" targetNamespace="http://service.iam.cunvoas.github.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.iam.cunvoas.github.com/" xmlns:ns1="http://bo.iam.cunvoas.github.com/" elementFormDefault="unqualified" targetNamespace="http://service.iam.cunvoas.github.com/" version="1.0">
+
+  <xs:import namespace="http://bo.iam.cunvoas.github.com/"/>
+
+  <xs:element name="findForConstants" type="tns:findForConstants"/>
+
+  <xs:element name="findForConstantsResponse" type="tns:findForConstantsResponse"/>
+
+  <xs:element name="findIamRawVector" type="tns:findIamRawVector"/>
+
+  <xs:element name="findIamRawVectorResponse" type="tns:findIamRawVectorResponse"/>
+
+  <xs:element name="findIamRessource" type="tns:findIamRessource"/>
+
+  <xs:element name="findIamRessourceByRole" type="tns:findIamRessourceByRole"/>
+
+  <xs:element name="findIamRessourceByRoleResponse" type="tns:findIamRessourceByRoleResponse"/>
+
+  <xs:element name="findIamRessourceResponse" type="tns:findIamRessourceResponse"/>
+
+  <xs:complexType name="findIamRessourceByRole">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="applicationId" type="xs:string"/>
+      <xs:element minOccurs="0" name="roleId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findIamRessourceByRoleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:iamRessource"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findIamRawVector">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="applicationId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findIamRawVectorResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:iamRawUser"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findForConstants">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="applicationId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findForConstantsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:iamRessource"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findIamRessource">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string"/>
+      <xs:element minOccurs="0" name="applicationId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findIamRessourceResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:iamRole"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://bo.iam.cunvoas.github.com/" xmlns:nsBo="http://bo.iam.cunvoas.github.com/" elementFormDefault="unqualified" targetNamespace="http://bo.iam.cunvoas.github.com/" version="1.0">
+
+  <xs:element name="iamRawUser" type="tns:iamRawUser"/>
+
+  <xs:element name="iamRessource" type="tns:iamRessource"/>
+
+  <xs:element name="iamRole" type="tns:iamRole"/>
+
+  <xs:complexType name="iamRessource">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="vectorCode" type="xs:ID"/>
+      <xs:element minOccurs="0" name="borneInf" type="xs:int"/>
+      <xs:element minOccurs="0" name="borneSup" type="xs:int"/>
+      <xs:element minOccurs="0" name="code" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="enfants" nillable="true" type="tns:iamRessource"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="parent" type="xs:IDREF"/>
+      <xs:element name="profondeur" type="xs:int"/>
+      <xs:element minOccurs="0" name="valeur" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="iamRawUser">
+    <xs:sequence>
+      <xs:element name="accountNonExpired" type="xs:boolean"/>
+      <xs:element name="accountNonLocked" type="xs:boolean"/>
+      <xs:element name="credentialsNonExpired" type="xs:boolean"/>
+      <xs:element name="enabled" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="firstname" type="xs:string"/>
+      <xs:element minOccurs="0" name="language" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="languages" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastname" type="xs:string"/>
+      <xs:element minOccurs="0" name="ldapPathString" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="roles" nillable="true" type="tns:iamRawRole"/>
+      <xs:element minOccurs="0" name="username" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="iamRawRole">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="application" type="xs:string"/>
+      <xs:element minOccurs="0" name="code" type="xs:string"/>
+      <xs:element minOccurs="0" name="delegation" type="tns:iamRawDelegate"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ressources" nillable="true" type="tns:iamRawRessource"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="iamRawDelegate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="delegateDescription" type="xs:string"/>
+      <xs:element minOccurs="0" name="delegateId" type="xs:int"/>
+      <xs:element minOccurs="0" name="delegateUid" type="xs:string"/>
+      <xs:element minOccurs="0" name="endDate" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="iamRawRessource">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="valeur" type="xs:int"/>
+      <xs:element minOccurs="0" name="vectorCode" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="iamRole">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" type="xs:string"/>
+      <xs:element minOccurs="0" name="commentaire" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="ressource" type="tns:iamRessource"/>
+      <xs:element name="ressourceValues">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string"/>
+                  <xs:element minOccurs="0" name="value" type="xs:string"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="findIamRawVector">
+    <wsdl:part element="ns1:findIamRawVector" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findForConstants">
+    <wsdl:part element="ns1:findForConstants" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findIamRessourceByRole">
+    <wsdl:part element="ns1:findIamRessourceByRole" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findIamRawVectorResponse">
+    <wsdl:part element="ns1:findIamRawVectorResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findIamRessource">
+    <wsdl:part element="ns1:findIamRessource" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findIamRessourceResponse">
+    <wsdl:part element="ns1:findIamRessourceResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findForConstantsResponse">
+    <wsdl:part element="ns1:findForConstantsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findIamRessourceByRoleResponse">
+    <wsdl:part element="ns1:findIamRessourceByRoleResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ServiceVectorIam">
+    <wsdl:operation name="findIamRessourceByRole">
+      <wsdl:input message="ns1:findIamRessourceByRole" name="findIamRessourceByRole">
+    </wsdl:input>
+      <wsdl:output message="ns1:findIamRessourceByRoleResponse" name="findIamRessourceByRoleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findIamRawVector">
+      <wsdl:input message="ns1:findIamRawVector" name="findIamRawVector">
+    </wsdl:input>
+      <wsdl:output message="ns1:findIamRawVectorResponse" name="findIamRawVectorResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findForConstants">
+      <wsdl:input message="ns1:findForConstants" name="findForConstants">
+    </wsdl:input>
+      <wsdl:output message="ns1:findForConstantsResponse" name="findForConstantsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findIamRessource">
+      <wsdl:input message="ns1:findIamRessource" name="findIamRessource">
+    </wsdl:input>
+      <wsdl:output message="ns1:findIamRessourceResponse" name="findIamRessourceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

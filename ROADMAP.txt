@@ -1,0 +1,63 @@
+
+DONE : -
+TODO : *
+TEST : x
+
+
+JPA Implementation
+	- Read Flat tree structure (ie interval for tree structure)
+	- Basic CRUD
+	- Complete CRUD for trees
+	* Validation
+
+CAS Mock
+	- basic webapp
+
+NoSQL Neo4J Implementation
+	* Graph Strutcure
+	* CRUD
+
+IAM
+	- Explicit users
+		- Mapping for applications/roles
+	- LDAP Users
+		- Mapping for applications/roles
+	- Web-service exposure
+
+Queries LDAP Groups
+	- Mock LDAP Server
+	- Read groups for one user
+	- Associate ROLES
+
+IAM Administration page
+	* AngularJS POC
+	- Web pages
+		- Applications
+		- Roles
+		- Ressources
+		- Habilitations
+	* WebSocket POC (information if another admin modifies concurently the habilitation tree structure)
+	* Delegation and Procuration
+		* Model
+		* CRUD
+		* Pages
+		* Information Mailing
+		
+IAM Integration sample
+	- Basic webapp with CAS mock and IAM
+		
+Delegation and Procuration
+	* soap/Rest service
+	* Non-repudiation service
+		
+CAS
+	* Approbation / federation
+			https://sites.ewu.edu/jgasper/ws-federation-cas-user-manual/
+			
+		
+Liens utiles :
+	http://www.petrikainulainen.net/spring-data-jpa-tutorial/
+	http://tomcat.apache.org/tomcat-7.0-doc/web-socket-howto.html
+	http://www.neo4j.org/download_thanks?edition=community&release=2.0.0&platform=windows
+
+ 

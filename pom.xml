@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.github.cunvoas</groupId>
+	<artifactId>iam_parent</artifactId>
+	<version>1.0.0-SNAPSHOT</version><!-- RELEASE -->
+	<packaging>pom</packaging>
+	<name>${project.artifactId}</name>
+
+	<properties>
+		<!-- Generic properties -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version-server>1.7</java.version-server>
+		<java.version-client>1.6</java.version-client>
+		
+		<!-- Compile option for Java 7, to be removed when maven-compiler-plugin 
+			will be fix -->
+			
+ 		<JAVA_HOME_1_7>C:/Program Files/Java/jdk1.7.0_51</JAVA_HOME_1_7> 
+
+		<!-- Web : see http://stackoverflow.com/tags/jstl/info -->
+		<servlet.version>2.5</servlet.version><!-- 3.0 / 2.2  ou 2.5 / 2.1 -->
+		<jsp.version>2.2</jsp.version>
+		<jstl.version>1.2.1</jstl.version>
+		<websocket.version>1.0</websocket.version>
+
+		<!-- Spring -->
+		<spring-framework.version>3.1.4.RELEASE</spring-framework.version><!-- 3.1.4.RELEASE 3.2.8.RELEASE -->
+		<spring-data-jpa.version>1.4.3.RELEASE</spring-data-jpa.version><!-- 1.4.3.RELEASE 1.5.1.RELEASE-->
+		<spring-ldap.version>1.3.2.RELEASE</spring-ldap.version><!-- 1.3.2.RELEASE 2.0.1.RELEAS-->
+		<spring-security-cas-client.version>3.0.8.RELEASE</spring-security-cas-client.version>
+		<cxf.version>2.7.10</cxf.version>
+		<cglib.version>3.1</cglib.version>
+		<querydsl.version>3.3.0</querydsl.version>
+
+		<!-- 
+		3.2.3.RELEASE
+		4.2.7.SP1
+		4.3.1.Final
+		 -->
+		<!-- Hibernate / JPA -->
+		<hibernate.version>4.3.6.Final</hibernate.version>
+
+		<!-- Logging -->
+		<!-- https://issues.apache.org/bugzilla/show_bug.cgi?id=50486 -->
+		<log4j.version>1.2.17</log4j.version>
+		<slf4j.version>1.7.5</slf4j.version>
+
+		<!-- Test -->
+		<junit.version>4.11</junit.version>
+		<powermock.version>1.5.3</powermock.version>
+		<org.aspectj-version>1.7.2</org.aspectj-version>
+		<tomcat.location>D:/_SOCLE/appserver/apache-tomcat-7.0.50</tomcat.location>
+
+        <sonar.exclusions>**/jasig/**/*.java</sonar.exclusions>
+        <sonar.test.exclusions>**/test/*</sonar.test.exclusions>
+	</properties>
+
+	<modules>
+		<!-- LDAP Structure -->
+		<module>iam-ldap</module>
+
+		<!-- IAM Core -->
+		<module>iam-core</module>
+
+        <!-- IAM exteentions for Spring Security -->
+        <module>iam-security</module>
+        
+		<!-- IAM WebApp, incl webservice et Admin interface -->
+		<module>iam-webapp</module>
+
+        <!-- IAM Webservice client et Helpers -->
+        <module>iam-client</module>
+		
+		<!-- IAM Tool : Constants generator -->
+<!--     	<module>iam-constant-tool</module> -->
+
+		<!-- BASIC CAS Server for testing -->
+<!-- 		<module>iam-mock-cas</module>
+		<module>iam-mock-ldap</module> -->
+
+		<!-- IAM Integration Exemple -->
+<!-- 		<module>iam-webapp-sample</module> -->
+		
+		<!-- Load Test with gatling -->
+<!--		<module>iam-load-gatling</module> -->
+		
+ 		<!-- RPM Package -->
+<!--		<module>iam-rpm</module>
+		<module>iam-dotnet-client</module> -->
+	</modules>
+
+    <scm>
+        <url>https://github.com/cunvoas/iam-module</url>
+        <connection>scm:git:git://github.com/cunvoas/iam-module.git</connection>
+        <developerConnection>scm:git:git@github.com:cunvoas/iam-module.git</developerConnection>
+    </scm>
+  
+    <developers>
+        <developer>
+            <id>cunvoas</id>
+            <name>Christophe UNVOAS</name>
+            <organization>N/A</organization>
+            <organizationUrl>N/A</organizationUrl>
+            <roles>
+                <role>lead developer</role>
+            </roles>
+            <timezone>+1</timezone>
+            <url>https://github.com/cunvoas</url>
+        </developer>
+        
+    </developers>
+    
+	<build>
+		<plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                            <!-- 
+							<goal>jar</goal> 
+							 -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${java.version-server}</source>
+					<target>${java.version-server}</target>
+					<compilerVersion>${java.version-server}</compilerVersion>
+					<showDeprecation>true</showDeprecation>
+					<showWarnings>true</showWarnings>
+					<executable>${JAVA_HOME_1_7}/bin/javac</executable>
+					<fork>true</fork>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+	   <!-- OWASP -->
+		<dependency>
+		    <groupId>org.owasp</groupId>
+		    <artifactId>dependency-check-maven</artifactId>
+		    <version>1.2.9</version>
+		</dependency>
+
+		<!-- Logger -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			  <groupId>log4j</groupId>
+			  <artifactId>log4j</artifactId>
+			  <version>${log4j.version}</version>
+		</dependency>
+
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>1.3</version>
+            <scope>test</scope>
+        </dependency>
+		
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
+		</dependency>
+            
+	</dependencies>
+ 
+ 
+	<profiles>
+		<profile>
+			<id>sonar</id>
+			<properties>
+				 <sonar.aditional.languages>web,js,java</sonar.aditional.languages>
+				 <sonar.web.sourceDirectory>src/main/webapp</sonar.web.sourceDirectory>
+				 <sonar.js.sourceDirectory>src/main/webapp</sonar.js.sourceDirectory>
+				 <sonar.java.sourceDirectory>src/main/java</sonar.java.sourceDirectory>
+				 <sonar.exclusions>src/main/webapp/resources/js</sonar.exclusions>
+				 
+<!-- 
+Les lignes ci-dessous ne sont utiles que si les valeurs par défaut 
+	ont modifiés dans le fichier de configuration.
+-->
+				<!-- 
+				 <sonar.jdbc.url>jdbc:postgresql://localhost:5433/sonar</sonar.jdbc.url>
+				 <sonar.jdbc.driver>org.postgresql.Driver</sonar.jdbc.driver>
+				 <sonar.jdbc.username>sonar</sonar.jdbc.username>
+				 <sonar.jdbc.password>sonar</sonar.jdbc.password>
+				 <sonar.host.url>http://localhost:9000</sonar.host.url>
+				-->
+			</properties>
+	   	 </profile>
+	</profiles>
+	
+</project>

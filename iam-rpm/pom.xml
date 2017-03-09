@@ -1,0 +1,110 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.github.cunvoas</groupId>
+		<artifactId>iam_parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version><!-- RELEASE -->
+	</parent>
+	<artifactId>iam-rpm</artifactId>
+	<packaging>pom</packaging>
+
+    <profiles>
+        <profile>
+            <id>LINUX</id>
+		    <build>
+		        <plugins>
+		            <!-- 
+		            @see http://zcourts.com/2012/09/11/building-rpms-on-windows/
+		             -->
+		            <plugin>
+		                <groupId>org.codehaus.mojo</groupId>
+		                <artifactId>rpm-maven-plugin</artifactId>
+		                <version>2.1-alpha-3</version>
+		                <executions>
+		                    <execution>
+		                        <id>generate-rpm</id>
+		                        <goals>
+		                            <goal>rpm</goal>
+		                        </goals>
+		                    </execution>
+		                </executions>
+		                <configuration>
+		                    <group>Application/WebApps</group>
+		                    <changelogFile>target/changelog</changelogFile>
+		                    
+		                    <defineStatements>
+		                        <defineStatement>_unpackaged_files_terminate_build 0</defineStatement>
+		                    </defineStatements>
+		                    <mappings>
+		                        <mapping>
+		                            <directory>/application/tomcat/tomcat1/webapp</directory>
+		                            <filemode>664</filemode>
+		                            <username>tomcat</username>
+		                            <groupname>tomcat</groupname>
+		                            <sources>
+		                                <source>
+		                                    <location>../iam-webapp/target/iam-webapp.war</location>
+		                                </source>
+		                            </sources>
+		                        </mapping>
+		                        
+                                <mapping>
+                                    <directory>/application/tomcat/tomcat1/share/iam-webapp</directory>
+                                    <filemode>664</filemode>
+                                    <username>tomcat</username>
+                                    <groupname>tomcat</groupname>
+                                    <sources>
+                                        <source>
+                                            <location>src/main/conf</location>
+                                        </source>
+                                    </sources>
+                                </mapping>
+		                    </mappings>
+		                    
+		                    <preinstallScriptlet>
+		                        <script>echo "installing now"</script>
+		                    </preinstallScriptlet>
+		                    <postinstallScriptlet>
+		                        <scriptFile>src/main/scripts/postinstall</scriptFile>
+		                        <fileEncoding>utf-8</fileEncoding>
+		                    </postinstallScriptlet>
+		                    <preremoveScriptlet>
+		                        <scriptFile>src/main/scripts/preremove</scriptFile>
+		                        <fileEncoding>utf-8</fileEncoding>
+		                    </preremoveScriptlet>
+		                </configuration>
+		            </plugin>
+		        </plugins>
+		    </build>
+        
+        </profile>
+    </profiles>
+
+    <!-- To use the report goals in your POM or parent POM -->
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changelog-plugin</artifactId>
+				<version>2.2</version>
+
+				<reportSets>
+					<reportSet>
+						<id>dual-report</id>
+						<configuration>
+							<type>range</type>
+							<range>30</range>
+						</configuration>
+						<reports>
+							<report>changelog</report>
+							<report>file-activity</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+
+			</plugin>
+		</plugins>
+	</reporting>
+
+</project>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<iamRole>
+	<code>ROLE</code>
+	<ressource>
+		<vectorCode>RESS_0</vectorCode>
+		<borneInf>0</borneInf>
+		<borneSup>5</borneSup>
+		<code>RESS_0</code>
+		<enfants>
+			<vectorCode>RESS_0.RESS_1</vectorCode>
+			<borneInf>1</borneInf>
+			<borneSup>2</borneSup>
+			<code>RESS_1</code>
+			<id>1</id>
+			<parent>RESS_0</parent>
+			<valeur>0</valeur>
+		</enfants>
+		<enfants>
+			<vectorCode>RESS_0.RESS_2</vectorCode>
+			<borneInf>3</borneInf>
+			<borneSup>4</borneSup>
+			<code>RESS_2</code>
+			<id>2</id>
+			<parent>RESS_0</parent>
+			<valeur>0</valeur>
+		</enfants>
+		<id>0</id>
+		<valeur>0</valeur>
+	</ressource>
+</iamRole>

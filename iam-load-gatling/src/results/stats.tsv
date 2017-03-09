@@ -1,0 +1,10 @@
+name	nbRequest	nbRequestOK	nbRequestKO	minResponseTime	minResponseTimeOK	minResponseTimeKO	maxResponseTime	maxResponseTimeOK	maxResponseTimeKO	meanResponseTime	meanResponseTimeOK	meanResponseTimeKO	deviation	deviationOK	deviationKO	percentile1	percentile1OK	percentile1KO	percentile2	percentile2OK	percentile2KO	group1Name	group1Count	group1Percentage	group2Name	group2Count	group2Percentage	group3Name	group3Count	group3Percentage	group4Name	group4Count	group4Percentage	meanNumberOfRequestsPerSecond	meanNumberOfRequestsPerSecondOK	meanNumberOfRequestsPerSecondKO
+Global Information	6700	6700	0	0	0	-1	90	90	-1	17	17	-1	15	15	-1	40	40	-1	50	50	-1	t < 800 ms	6700	100	800 ms < t < 1200 ms	0	0	t > 1200 ms	0	0	failed	0	0	28	28	-1
+ServiceDirectory	100	100	0	0	0	-1	20	20	-1	8	8	-1	4	4	-1	10	10	-1	10	10	-1	t < 800 ms	100	100	800 ms < t < 1200 ms	0	0	t > 1200 ms	0	0	failed	0	0	0	0	-1
+WSDL_ServiceVectorIam	3100	3100	0	0	0	-1	20	20	-1	2	2	-1	4	4	-1	10	10	-1	10	10	-1	t < 800 ms	3100	100	800 ms < t < 1200 ms	0	0	t > 1200 ms	0	0	failed	0	0	13	13	-1
+request_3	100	100	0	10	10	-1	40	40	-1	21	21	-1	7	7	-1	40	40	-1	40	40	-1	t < 800 ms	100	100	800 ms < t < 1200 ms	0	0	t > 1200 ms	0	0	failed	0	0	0	0	-1
+request_4	100	100	0	20	20	-1	90	90	-1	41	41	-1	13	13	-1	60	60	-1	70	70	-1	t < 800 ms	100	100	800 ms < t < 1200 ms	0	0	t > 1200 ms	0	0	failed	0	0	0	0	-1
+request_5	100	100	0	20	20	-1	60	60	-1	38	38	-1	8	8	-1	50	50	-1	60	60	-1	t < 800 ms	100	100	800 ms < t < 1200 ms	0	0	t > 1200 ms	0	0	failed	0	0	0	0	-1
+raw_vector	3000	3000	0	20	20	-1	80	80	-1	30	30	-1	7	7	-1	40	40	-1	50	50	-1	t < 800 ms	3000	100	800 ms < t < 1200 ms	0	0	t > 1200 ms	0	0	failed	0	0	13	13	-1
+request_6	100	100	0	10	10	-1	20	20	-1	13	13	-1	2	2	-1	20	20	-1	20	20	-1	t < 800 ms	100	100	800 ms < t < 1200 ms	0	0	t > 1200 ms	0	0	failed	0	0	0	0	-1
+request_7	100	100	0	20	20	-1	60	60	-1	33	33	-1	8	8	-1	50	50	-1	60	60	-1	t < 800 ms	100	100	800 ms < t < 1200 ms	0	0	t > 1200 ms	0	0	failed	0	0	0	0	-1

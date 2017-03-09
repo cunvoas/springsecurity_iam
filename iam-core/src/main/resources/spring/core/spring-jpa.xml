@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.1.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx.xsd
+           http://www.springframework.org/schema/data/jpa
+           http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
+   	">
+
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
+		<property name="persistenceUnitName" value="jpa.IAM" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+		<property name="jpaDialect" ref="jpaDialect" />
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.default_schema">${hibernate.schema}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.ddl:validate}</prop>
+				<prop key="hibernate.show_sql">${hibernate.sqlTrace:false}</prop>
+				<prop key="hibernate.format_sql">${hibernate.sqlTrace:false}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="jpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="database" value="POSTGRESQL" /><!-- HSQL -->
+		<property name="databasePlatform" value="org.hibernate.dialect.PostgreSQL9Dialect" /><!-- org.hibernate.dialect.HSQLDialect -->
+	</bean>
+
+	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaDialect" ref="jpaDialect" />
+	</bean>
+
+<!-- Privilégier AOP  
+	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+-->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+
+<!-- stratégie transactionnelle AOP 
+ Standard JPA does not support custom isolation levels - use a special JpaDialect for your JPA implementation
+
+ 	<bean id="jpaDialect" class="com.github.cunvoas.iam.persistance.transaction.IsolationSupportHibernateJpaDialect" />
+
+ 	-->
+ 	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="find*" read-only="true"  />
+			<tx:method name="load*" read-only="true"  />
+			<tx:method name="search*" read-only="true"  />
+			<tx:method name="is*" read-only="true"  />
+			<tx:method name="*" rollback-for="com.github.cunvoas.iam.exception.IamException"  />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		 <aop:pointcut id="serviceMethods" expression="execution(* com.github.cunvoas.iam.service.impl.ServiceIam*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods" />
+	</aop:config>
+
+
+	<jpa:repositories base-package="com.github.cunvoas.iam.persistance.repositories" />
+
+</beans>   

@@ -1,0 +1,16 @@
+package com.github.cunvoas.iam.persistance.entity;
+
+import com.github.cunvoas.iam.persistance.entity.Role;
+import javax.annotation.Generated;
+import javax.persistence.metamodel.SingularAttribute;
+import javax.persistence.metamodel.StaticMetamodel;
+
+@Generated(value="EclipseLink-2.5.0.v20130507-rNA", date="2014-12-29T14:58:17")
+@StaticMetamodel(LdapMember.class)
+public class LdapMember_ { 
+
+    public static volatile SingularAttribute<LdapMember, Integer> id;
+    public static volatile SingularAttribute<LdapMember, String> ldapQuery;
+    public static volatile SingularAttribute<LdapMember, Role> role;
+
+}

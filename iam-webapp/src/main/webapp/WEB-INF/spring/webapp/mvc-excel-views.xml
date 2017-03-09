@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- classe abstraite et factorisation du code. -->
+	<bean id="abstractExcelView" class="com.github.cunvoas.iam.web.front.jxl.AbstractIamExcelView" abstract="true">
+	</bean>
+
+	<bean id="exportIamExcelView" class="com.github.cunvoas.iam.web.front.jxl.ExportExcelView" parent="abstractExcelView">
+		<property name="serviceExcelInOut" ref="ServiceExcelInOut" />
+		<property name="url" value="/WEB-INF/classes/xls_template/IAM_BlankTemplate" />
+	</bean>
+
+
+</beans>

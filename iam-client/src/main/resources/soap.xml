@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://impl.service.iam.cunvoas.github.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://service.iam.cunvoas.github.com/" name="ServiceVectorIamImplService" targetNamespace="http://impl.service.iam.cunvoas.github.com/">
+  <wsdl:import location="./soap.xsd" namespace="http://service.iam.cunvoas.github.com/">
+    </wsdl:import>
+  <wsdl:binding name="ServiceVectorIamImplServiceSoapBinding" type="ns1:ServiceVectorIam">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="findIamRessourceByRole">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findIamRessourceByRole">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findIamRessourceByRoleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findIamRawVector">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findIamRawVector">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findIamRawVectorResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findForConstants">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findForConstants">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findForConstantsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findIamRessource">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findIamRessource">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findIamRessourceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceVectorIamImplService">
+    <wsdl:port binding="tns:ServiceVectorIamImplServiceSoapBinding" name="ServiceVectorIamImplPort">
+      <soap:address location="http://st017546:8080/iam-webapp/services/iam/soap"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

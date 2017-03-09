@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM -->
+<html debug="true"><div id="FirebugChannel" style="display: none;">FB_deactivate</div>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IAM Identity Acess Management - Spring Security and CAS integration">
+    <meta name="keywords" content="IAM,Identity Acess Management,Authentication,Authorization,Non-Repudiation,Delegation">
+    <meta name="author" content="CUNVOAS">
+    <link rel="shortcut icon" href="../../main/webapp/resources/ico/favicon.ico">
+
+    <title>IAM - Gestion des habilitations</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../main/webapp/resources/css/bootstrap.css" rel="stylesheet">
+    <!-- Add custom CSS here -->
+    <link href="../../main/webapp/resources/css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../main/webapp/resources/font-awesome/css/font-awesome.min.css">
+
+ 	<!-- Page Specific CSS -->
+	
+
+
+
+
+<link rel="stylesheet" href="../../main/webapp/resources/js/jstree/themes/default/style.css">
+	
+    <!-- JavaScript -->
+    <script src="../../main/webapp/resources/js/jquery-1.10.2.js"></script><style type="text/css"></style>
+    <script src="../../main/webapp/resources/js/bootstrap.js"></script>
+
+    <!-- Page Specific Plugins -->
+    
+
+<script src="../../main/webapp/resources/js/jstree/jstree.js"></script>
+<script src="../../main/webapp/resources/js/jstree/jquery.ui.touch.js"></script>
+<script src="../../main/webapp/resources/js/jstree/jquery.hotkeys.js"></script>
+
+
+
+
+<style type="text/css">
+.ui-button {
+	margin-left: -1px;
+}
+.ui-button-icon-only .ui-button-text {
+	padding: 0.35em;
+}
+.ui-autocomplete-input {
+	margin: 0;
+	padding: 0.4em 0 0 0;
+}
+.ui-combobox {
+	position: relative;
+	display: inline-block;
+}
+.ui-combobox-toggle {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin-left: -1px;
+	padding: 0;
+	/* adjust styles for IE 6/7 */
+	*height: 1.7em;
+	*top: 0.1em;
+}
+.ui-combobox-input {
+	margin: 0;
+	padding: 0.3em;
+  }
+</style>
+
+  </head>
+
+  <body style="">
+
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://localhost:8080/iam-webapp/admin-iam/home.do">IAM - Gestion des habilitations</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav side-nav">
+     		 
+
+
+
+
+
+
+
+          
+           
+           	<li><a href="http://localhost:8080/iam-webapp/admin-iam/home.do"><i class="fa fa-dashboard"></i> Tableau de bord</a></li>
+           
+           
+           
+           
+            <li class="dropdown">
+              <a href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-desktop"></i> Applications <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="http://localhost:8080/iam-webapp/admin-iam/application/list.do"><i class="fa fa-desktop"></i> Lister</a></li>
+                
+                
+                <li><a href="http://localhost:8080/iam-webapp/admin-iam/application/upload.do"><i class="fa fa-upload"></i> Téléverser</a></li>
+                
+              </ul>
+            </li>
+           
+           
+           
+           	<li><a href="http://localhost:8080/iam-webapp/admin-iam/resource/list.do"><i class="fa fa-list-ul"></i>  Ressources</a></li>
+           
+           
+           
+           	<li><a href="http://localhost:8080/iam-webapp/admin-iam/role/list.do"><i class="fa fa-group"></i> Roles</a></li>
+           
+            
+
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right navbar-user">
+          	 
+
+
+
+
+
+
+
+            <li class="dropdown messages-dropdown">
+              <a href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-flag"></i> <img class="flag" src="./IAM - Gestion des habilitations_files/flag..png" alt="=">  <b class="caret"></b></a>
+              
+            </li>
+            
+            <li class="dropdown alerts-dropdown">
+              <a href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-group"></i> ADMIN <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              
+              </ul>
+            </li>
+            <li class="dropdown user-dropdown">
+              <a href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Christophe <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="fa fa-user"></i> Profile</a></li>
+                <li><a href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="fa fa-exchange"></i> Delegation <span class="badge">1</span></a></li>
+                <li><a href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="fa fa-gear"></i> Settings</a></li>
+                <li class="divider"></li>
+                <li><a href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="fa fa-code-fork"></i> IAM&nbsp;v. </a></li>
+                 <li class="divider"></li>
+                 <li><a href="http://localhost:8080/iam-webapp/j_spring_security_logout"><i class="fa fa-power-off"></i> Log Out</a></li>
+              </ul>
+            </li>
+
+          
+                      
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+      <div id="page-wrapper">
+
+		
+
+
+<div class="row">
+	<div class="col-lg-12">
+		<h2>
+			Gestion des ressources applicatives
+		</h2>
+	</div>
+	<ol class="breadcrumb">
+		<li class="active"><i class="fa fa-list-ul"></i> Arbre des ressources</li>
+		<!-- 
+              <li><i class="fa fa-edit"></i> Modification de l'application</li>
+              <li><i class="fa fa-upload"></i> Téléverser une application</li>
+               -->
+	</ol>
+</div>
+<!-- /.row -->
+
+<div class="row">
+	<div class="col-lg-8">
+		<button type="button" class="btn btn-primary" onclick="ress_create();">
+			<i class="fa fa-plus"></i> Create
+		</button>
+		<button type="button" class="btn btn-info" onclick="ress_rename();">
+			<i class="fa fa-pencil"></i> Rename
+		</button>
+		<button type="button" class="btn btn-warning" onclick="ress_delete();">
+			<i class="fa fa-trash-o"></i> Delete
+		</button>
+	</div>
+	<div class="col-lg-4" style="text-align: right;">
+		<input type="text" value="" style="box-shadow: inset 0 0 4px #eee; width: 120px; margin: 0; padding: 6px 12px; border-radius: 4px; border: 1px solid silver; font-size: 1.1em;" id="searchTree" placeholder="Search">
+	</div>
+
+
+	<div class="col-lg-12">
+		<h4>
+			Arbre des ressources
+		</h4>
+
+		<div id="ressTree" class="jstree jstree-1 jstree-default jstree-default-responsive" role="tree" aria-activedescendant="15"><ul class="jstree-container-ul jstree-no-dots jstree-wholerow-ul"><li role="treeitem" aria-expanded="true" id="1" class="jstree-node  jstree-open jstree-last" aria-selected="false"><div unselectable="on" class="jstree-wholerow">&nbsp;</div><i class="jstree-icon jstree-ocl"></i><a class="jstree-anchor" href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="jstree-icon jstree-themeicon fa fa-desktop jstree-themeicon-custom"></i>IAM</a><ul role="group" class="jstree-children"><li role="treeitem" aria-expanded="true" id="2" class="jstree-node  jstree-open" aria-selected="false"><div unselectable="on" class="jstree-wholerow">&nbsp;</div><i class="jstree-icon jstree-ocl"></i><a class="jstree-anchor" href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="jstree-icon jstree-themeicon fa fa-folder jstree-themeicon-custom"></i>APPLICATION</a><ul role="group" class="jstree-children"><li role="treeitem" id="3" class="jstree-node  jstree-leaf" aria-selected="false"><div unselectable="on" class="jstree-wholerow">&nbsp;</div><i class="jstree-icon jstree-ocl"></i><a class="jstree-anchor" href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="jstree-icon jstree-themeicon fa fa-leaf jstree-themeicon-custom"></i>LISTER</a></li><li role="treeitem" id="4" class="jstree-node  jstree-leaf" aria-selected="false"><div unselectable="on" class="jstree-wholerow">&nbsp;</div><i class="jstree-icon jstree-ocl"></i><a class="jstree-anchor" href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="jstree-icon jstree-themeicon fa fa-leaf jstree-themeicon-custom"></i>CREER</a></li><li role="treeitem" id="5" class="jstree-node  jstree-leaf" aria-selected="false"><div unselectable="on" class="jstree-wholerow">&nbsp;</div><i class="jstree-icon jstree-ocl"></i><a class="jstree-anchor" href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="jstree-icon jstree-themeicon fa fa-leaf jstree-themeicon-custom"></i>UPLOAD</a></li><li role="treeitem" id="6" class="jstree-node  jstree-leaf jstree-last"><div unselectable="on" class="jstree-wholerow">&nbsp;</div><i class="jstree-icon jstree-ocl"></i><a class="jstree-anchor" href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="jstree-icon jstree-themeicon fa fa-leaf jstree-themeicon-custom"></i>SUPPRIMER</a></li></ul></li><li role="treeitem" aria-expanded="true" id="7" class="jstree-node  jstree-open" aria-selected="false"><div unselectable="on" class="jstree-wholerow">&nbsp;</div><i class="jstree-icon jstree-ocl"></i><a class="jstree-anchor" href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="jstree-icon jstree-themeicon fa fa-folder jstree-themeicon-custom"></i>ROLE</a><ul role="group" class="jstree-children"><li role="treeitem" id="8" class="jstree-node  jstree-leaf" aria-selected="false"><div unselectable="on" class="jstree-wholerow">&nbsp;</div><i class="jstree-icon jstree-ocl"></i><a class="jstree-anchor" href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="jstree-icon jstree-themeicon fa fa-leaf jstree-themeicon-custom"></i>LISTER</a></li><li role="treeitem" id="9" class="jstree-node  jstree-leaf" aria-selected="false"><div unselectable="on" class="jstree-wholerow">&nbsp;</div><i class="jstree-icon jstree-ocl"></i><a class="jstree-anchor" href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="jstree-icon jstree-themeicon fa fa-leaf jstree-themeicon-custom"></i>CREER</a></li><li role="treeitem" id="10" class="jstree-node  jstree-leaf" aria-selected="false"><div unselectable="on" class="jstree-wholerow">&nbsp;</div><i class="jstree-icon jstree-ocl"></i><a class="jstree-anchor" href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="jstree-icon jstree-themeicon fa fa-leaf jstree-themeicon-custom"></i>MODIFIER</a></li><li role="treeitem" id="11" class="jstree-node  jstree-leaf jstree-last" aria-selected="false"><div unselectable="on" class="jstree-wholerow">&nbsp;</div><i class="jstree-icon jstree-ocl"></i><a class="jstree-anchor" href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="jstree-icon jstree-themeicon fa fa-leaf jstree-themeicon-custom"></i>SUPPRIMER</a></li></ul></li><li role="treeitem" aria-expanded="true" id="12" class="jstree-node  jstree-open"><div unselectable="on" class="jstree-wholerow">&nbsp;</div><i class="jstree-icon jstree-ocl"></i><a class="jstree-anchor" href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="jstree-icon jstree-themeicon fa fa-folder jstree-themeicon-custom"></i>RESSOURCE</a><ul role="group" class="jstree-children"><li role="treeitem" id="13" class="jstree-node  jstree-leaf"><div unselectable="on" class="jstree-wholerow">&nbsp;</div><i class="jstree-icon jstree-ocl"></i><a class="jstree-anchor" href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="jstree-icon jstree-themeicon fa fa-leaf jstree-themeicon-custom"></i>LISTER</a></li><li role="treeitem" id="14" class="jstree-node  jstree-leaf"><div unselectable="on" class="jstree-wholerow">&nbsp;</div><i class="jstree-icon jstree-ocl"></i><a class="jstree-anchor" href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="jstree-icon jstree-themeicon fa fa-leaf jstree-themeicon-custom"></i>CREER</a></li><li role="treeitem" id="15" class="jstree-node  jstree-leaf" aria-selected="false"><div unselectable="on" class="jstree-wholerow">&nbsp;</div><i class="jstree-icon jstree-ocl"></i><a class="jstree-anchor" href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="jstree-icon jstree-themeicon fa fa-leaf jstree-themeicon-custom"></i>MODIFIER</a></li><li role="treeitem" id="16" class="jstree-node  jstree-leaf" aria-selected="false"><div unselectable="on" class="jstree-wholerow">&nbsp;</div><i class="jstree-icon jstree-ocl"></i><a class="jstree-anchor" href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="jstree-icon jstree-themeicon fa fa-leaf jstree-themeicon-custom"></i>SUPPRIMER</a></li><li role="treeitem" id="17" class="jstree-node  jstree-leaf jstree-last" aria-selected="false"><div unselectable="on" class="jstree-wholerow">&nbsp;</div><i class="jstree-icon jstree-ocl"></i><a class="jstree-anchor" href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="jstree-icon jstree-themeicon fa fa-leaf jstree-themeicon-custom"></i>AFFECTER_ROLE</a></li></ul></li><li role="treeitem" id="18" class="jstree-node  jstree-leaf jstree-last" aria-selected="false"><div unselectable="on" class="jstree-wholerow">&nbsp;</div><i class="jstree-icon jstree-ocl"></i><a class="jstree-anchor" href="http://localhost:8080/iam-webapp/admin-iam/resource/findResource.do?appId=IAM#"><i class="jstree-icon jstree-themeicon fa fa-leaf jstree-themeicon-custom"></i>ACCUEIL</a></li></ul></li></ul></div>
+
+		<script>
+function ress_create() {
+	var ref = $('#ressTree').jstree(true),
+		sel = ref.get_selected();
+	if(!sel.length) { return false; }
+	sel = sel[0];
+	sel = ref.create_node(sel, {"type":"file"});
+	if(sel) {
+		ref.edit(sel);
+	}
+};
+function ress_rename() {
+	var ref = $('#ressTree').jstree(true),
+		sel = ref.get_selected();
+	if(!sel.length) { return false; }
+	sel = sel[0];
+	ref.edit(sel);
+};
+function ress_delete() {
+	var ref = $('#ressTree').jstree(true),
+		sel = ref.get_selected();
+	if(!sel.length) { return false; }
+	ref.delete_node(sel);
+};
+
+
+$( document ).ready(function() {
+	/* JSTree Events to monitor
+	 create_node.jstree
+	 rename_node.jstree
+	 delete_node.jstree
+	 move_node.jstree
+	// set_text.jstree
+	 
+	 */
+	 
+	function treeLog(data, strEvent) {
+		console.log("action "+data.action+ ", strEvent="+strEvent);
+		
+		if ( typeof(data.node) == "object" ) {
+			console.log("\tid="+data.node.id);
+			console.log("\tparentId="+data.node.parent);
+			console.log("\ttext="+data.node.text);
+			console.log("\tpos="+data.position);
+	
+			console.log("\tOrg id="+data.node.original.id);
+			console.log("\tOrg parentId="+data.node.original.parent);
+			console.log("\tOrg text="+data.node.original.text);
+			
+			if (data.node.children.length==0 && data.node.icon=="fa fa-folder") {
+				$("#ressTree").jstree("set_icon", data.node, "fa fa-leaf");
+				
+			} else if (data.node.children.length>0 && data.node.icon=="fa fa-leaf") {
+				$("#ressTree").jstree("set_icon", data.node, "fa fa-folder");
+				
+				
+			} else if (data.node.original.parent != data.node.parent) {
+				console.log("PARENT CHANGED");
+				// find new parent and check parent icon
+				parentNode = $("#ressTree").jstree("get_node", data.node.parent);
+				console.log("PARENT ID="+parentNode.id+" text="+parentNode.text);
+				 if (parentNode.children.length>0 && parentNode.icon=="fa fa-leaf") {
+					console.log("PARENT CHANGED : LEAF BECAME FOLDER");
+					 $("#ressTree").jstree("set_icon", parentNode, "fa fa-folder");
+				 }
+				 
+				// find old parent and check parent icon
+				oldParentNode = $("#ressTree").jstree("get_node", data.node.original.parent);
+				console.log("OLD PARENT ID="+data.node.original.parent+","+oldParentNode.id+" text="+oldParentNode.text);
+				 if (oldParentNode.children.length==0 && oldParentNode.icon=="fa fa-folder") {
+					console.log("PARENT CHANGED : FOLDER BECAME LEAF");
+					 $("#ressTree").jstree("set_icon", oldParentNode, "fa fa-leaf");
+				 }
+				 
+			}
+						
+		}
+	}
+	
+	
+	$("#ressTree")
+	.on('changed.jstree', function (e, data) {
+	    treeLog(data, "changed");
+	  })
+	.on('create_node.jstree', function (e, data) {
+		 treeLog(data, "create");
+		})
+	.on('rename_node.jstree', function (e, data) {
+		 treeLog(data, "rename");
+ 	 	})
+ 	.on('delete_node.jstree', function (e, data) {
+		 treeLog(data, "delete");
+ 	 	})
+ 	.on('move_node.jstree', function (e, data) {
+		 treeLog(data, "move");
+		 data.node.original.parent = data.node.parent;
+ 		})
+	  
+	.jstree({
+		"plugins" : [ "unique", "dnd", "wholerow", "search", "types"],
+		"core" : {
+			"check_callback" : true,
+			"multiple" : false,
+			"data" : [
+			          {"id":"1","parent":"#","text":"IAM","icon":"fa fa-desktop","state":{"opened":true,"selected":false,"disabled":false}},
+			          {"id":"2","parent":"1","text":"APPLICATION","icon":"fa fa-folder","state":{"opened":true,"selected":false,"disabled":false}},
+			          {"id":"3","parent":"2","text":"LISTER","icon":"fa fa-leaf","state":{"opened":true,"selected":false,"disabled":false}},
+			          {"id":"4","parent":"2","text":"CREER","icon":"fa fa-leaf","state":{"opened":true,"selected":false,"disabled":false}},
+			          {"id":"5","parent":"2","text":"UPLOAD","icon":"fa fa-leaf","state":{"opened":true,"selected":false,"disabled":false}},
+			          {"id":"6","parent":"2","text":"SUPPRIMER","icon":"fa fa-leaf","state":{"opened":true,"selected":false,"disabled":false}},
+			          {"id":"7","parent":"1","text":"ROLE","icon":"fa fa-folder","state":{"opened":true,"selected":false,"disabled":false}},
+			          {"id":"8","parent":"7","text":"LISTER","icon":"fa fa-leaf","state":{"opened":true,"selected":false,"disabled":false}},
+			          {"id":"9","parent":"7","text":"CREER","icon":"fa fa-leaf","state":{"opened":true,"selected":false,"disabled":false}},
+			          {"id":"10","parent":"7","text":"MODIFIER","icon":"fa fa-leaf","state":{"opened":true,"selected":false,"disabled":false}},
+			          {"id":"11","parent":"7","text":"SUPPRIMER","icon":"fa fa-leaf","state":{"opened":true,"selected":false,"disabled":false}},
+			          {"id":"12","parent":"1","text":"RESSOURCE","icon":"fa fa-folder","state":{"opened":true,"selected":false,"disabled":false}},
+			          {"id":"13","parent":"12","text":"LISTER","icon":"fa fa-leaf","state":{"opened":true,"selected":false,"disabled":false}},
+			          {"id":"14","parent":"12","text":"CREER","icon":"fa fa-leaf","state":{"opened":true,"selected":false,"disabled":false}},
+			          {"id":"15","parent":"12","text":"MODIFIER","icon":"fa fa-leaf","state":{"opened":true,"selected":false,"disabled":false}}
+			          ,{"id":"16","parent":"12","text":"SUPPRIMER","icon":"fa fa-leaf","state":{"opened":true,"selected":false,"disabled":false}},
+			          {"id":"17","parent":"12","text":"AFFECTER_ROLE","icon":"fa fa-leaf","state":{"opened":true,"selected":false,"disabled":false}},
+			          {"id":"18","parent":"1","text":"ACCUEIL","icon":"fa fa-leaf","state":{"opened":true,"selected":false,"disabled":false}}
+			         ]
+		},
+		 "cookies" : {
+	            save_opened : true,
+	            save_selected : true,
+	            auto_save : true
+	        },
+	        
+		"types" : {
+			"valid_children": ["root"],
+		          "root" : {
+		        	  "delete_node": false,
+		          }
+		     },     
+		
+	});
+	
+	var to = false;
+	$('#searchTree').keyup(function () {
+		if(to) { clearTimeout(to); }
+		to = setTimeout(function () {
+			var v = $('#searchTree').val();
+			$('#ressTree').jstree(true).search(v);
+		}, 250);
+	});
+
+	
+	console.log( "document loaded" );
+})
+</script>
+
+	</div>
+	<!-- /.col-12 -->
+</div>
+<!-- /.row -->
+
+
+      </div><!-- /#page-wrapper -->
+
+    </div><!-- /#wrapper -->
+
+  
+
+<ul class="vakata-context"></ul><div id="jstree-marker" style="display: none;">&nbsp;</div><iframe src="./IAM - Gestion des habilitations_files/IAM - Gestion des habilitations.htm" frameborder="0" id="FirebugUI" style="border: 0px; visibility: visible; z-index: 2147483647; position: fixed; width: 100%; left: 0px; bottom: 0px; height: 319px; display: none;"></iframe></body>
+</html>

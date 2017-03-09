@@ -1,0 +1,265 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>iam_parent</artifactId>
+		<groupId>com.github.cunvoas</groupId>
+		<version>1.0.0-SNAPSHOT</version><!-- RELEASE -->
+	</parent>
+	<groupId>com.github.cunvoas</groupId>
+	<artifactId>iam-core</artifactId>
+	<packaging>jar</packaging>
+	
+	
+	<build>
+	   <plugins>
+	       <plugin>
+	            <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>2.0.9</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                        <version>2.0.9</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>generate-wsdl</id>
+                        <phase>post-clean</phase>
+                        <!-- <phase>process-classes</phase>  -->
+                        <configuration>
+                             <className>com.github.cunvoas.iam.service.impl.ServiceVectorIamImpl</className> 
+                        </configuration>
+                        <goals>
+                            <goal>java2wsdl</goal>
+                        </goals>
+                    </execution>
+                </executions>
+	       </plugin>
+	       
+	   </plugins>
+	</build>
+
+	<dependencies>
+		<!-- LDAP Client -->
+		<dependency>
+			<groupId>com.github.cunvoas</groupId>
+			<artifactId>iam-ldap</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+
+		<!-- Utilitaire -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+        <dependency>
+          <groupId>commons-collections</groupId>
+		  <artifactId>commons-collections</artifactId>
+		  <version>3.2.1</version>
+        </dependency>
+		
+		
+
+		<!-- hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+
+		<!-- Spring core -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+
+		<!-- Spring orm & jpa -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring-data-jpa.version}</version>
+		</dependency>
+
+
+		<!-- AOP -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>${cglib.version}</version>
+		</dependency>
+
+		<!-- AspectJ -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>
+
+
+		<!-- JSON -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+
+		<!-- validation -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.0.0.GA</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.1.0.Final</version>
+		</dependency>
+
+		<!-- monitoring -->
+		<dependency>
+			<groupId>com.codahale.metrics</groupId>
+			<artifactId>metrics-core</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+
+
+		<!-- Test Artifacts -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring-framework.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.3.163</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.2-1003-jdbc4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.directory.server</groupId>
+			<artifactId>apacheds-all</artifactId>
+			<version>1.5.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring-framework.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-ldap</artifactId>
+			<version>${spring-framework.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+
+    <profiles>
+        <profile>
+            <id>modelgen</id>
+            <dependencies>
+				<dependency>
+				  <groupId>org.eclipse.persistence</groupId>
+				  <artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
+				  <version>2.5.0</version>
+				</dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                   <plugin>
+<!-- 
+see : http://stackoverflow.com/questions/17385092/eclipselink-2-5-metamodel-generation-using-maven
+Very important note: 
+    the metamodel is generated only if the entities are declared in the persistence unit.
+     It doesn't work with discovered entities.
+ -->
+			            <groupId>org.bsc.maven</groupId>
+			            <artifactId>maven-processor-plugin</artifactId>
+			            <version>2.2.4</version>
+			            <executions>
+			                <execution>
+			                    <id>eclipselink-jpa-metamodel</id>
+			                    <goals>
+			                        <goal>process</goal>
+			                    </goals>
+			                    <phase>generate-sources</phase>
+			                    <configuration>
+			                        <processors>
+			                            <processor>org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor</processor>
+			                        </processors>
+			                        <outputDirectory>${project.build.directory}/generated-sources/meta-model</outputDirectory>
+			                    </configuration>
+			                </execution>
+			            </executions>
+			            <dependencies>
+			                <dependency>
+			                    <groupId>org.eclipse.persistence</groupId>
+			                    <artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
+			                    <version>2.5.0</version>
+			                </dependency>
+			            </dependencies>
+			        </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    
+</project>

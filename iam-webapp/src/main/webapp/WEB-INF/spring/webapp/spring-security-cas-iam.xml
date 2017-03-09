@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-3.1.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-3.1.xsd
+     ">
+
+<!-- Spring security debug option -->
+<security:debug />
+
+	<!-- CAS Client Configuration -->
+	<bean id="serviceProperties" class="org.springframework.security.cas.ServiceProperties">
+		<property name="service" value="${myapp.server}/${myapp.instance}/j_spring_cas_security_check" />
+		<property name="sendRenew" value="false" />
+	</bean>
+	
+	<!-- Authentication Manager -->
+	<security:authentication-manager alias="authenticationManager" >
+		<security:authentication-provider ref="casAuthenticationProvider" />
+	</security:authentication-manager>
+	
+	<bean id="casAuthenticationProvider" class="org.springframework.security.cas.authentication.CasAuthenticationProvider">
+		<property name="authenticationUserDetailsService">
+			<bean class="org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper">
+				<!-- IAM Security @see spring File: iam-security/spring/spring-security-iam-*.xml -->
+				<constructor-arg ref="iamUserDetailsService" />
+			</bean>
+		</property>
+		<property name="serviceProperties" ref="serviceProperties" />
+		<property name="ticketValidator">
+			<bean class="org.jasig.cas.client.validation.Cas20ServiceTicketValidator">
+				<constructor-arg index="0" value="${cas.server}" />
+			</bean>
+		</property>
+		<property name="key" value="${myapp.uniqueKey}" />
+	</bean>
+
+	<bean id="casFilter" class="org.springframework.security.cas.web.CasAuthenticationFilter">
+		<property name="authenticationManager" ref="authenticationManager" />
+	</bean>
+
+	<bean id="casEntryPoint" class="org.springframework.security.cas.web.CasAuthenticationEntryPoint">
+		<property name="loginUrl" value="${cas.server}/login" />
+		<property name="serviceProperties" ref="serviceProperties" />
+	</bean>
+	
+	
+	<!-- local http entries -->
+	<security:http pattern="/resources/css/**" security="none"/>
+	<security:http pattern="/resources/font-awesome/**" security="none"/>
+	<security:http pattern="/resources/imgs/**" security="none"/>
+	<security:http pattern="/services/**" security="none"/>
+	<security:http entry-point-ref="casEntryPoint" auto-config="true" access-decision-manager-ref="accessDecisionManager" >
+		<security:intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY" />
+		<security:logout logout-url="/j_spring_security_logout" logout-success-url="${cas.server}/logout" invalidate-session="true"/>
+		<security:custom-filter position="CAS_FILTER" ref="casFilter" />
+	</security:http>
+	
+	<util:constant id="IAM_INVISIBLE" static-field="com.github.cunvoas.iam.security.helper.IamHelper.INVISIBLE"/>
+	<util:constant id="IAM_VISIBLE" static-field="com.github.cunvoas.iam.security.helper.IamHelper.VISIBLE"/>
+	<util:constant id="IAM_MODIFICATION" static-field="com.github.cunvoas.iam.security.helper.IamHelper.ACTION"/>
+
+	<bean id="expressionHandler" depends-on="iamPermissionEvaluator"
+		class="org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler">
+		<property name="permissionEvaluator" ref="iamPermissionEvaluator" />
+	</bean>
+	
+	 <!-- pre-post-annotations="enabled" secured-annotations="enabled"  -->
+	<security:global-method-security 
+			metadata-source-ref="securedIamAnnotationSecurityMetadataSource"
+			access-decision-manager-ref="accessDecisionManager"
+			>
+		<security:expression-handler ref="expressionHandler" />
+		<!-- 
+		<security:protect-pointcut access="ROLE_BY_IAM" expression="execution(* com.github.cunvoas..*.*(..))" />
+		 -->
+	</security:global-method-security>
+
+
+	<bean id="iamVoter" class="com.github.cunvoas.iam.security.vote.IamVectorVoter" />
+  
+	<bean id="accessDecisionManager" autowire-candidate="true" class="org.springframework.security.access.vote.AffirmativeBased">
+		<constructor-arg>
+			<list>
+				<bean class="org.springframework.security.access.vote.AuthenticatedVoter"/>
+				<bean class="org.springframework.security.access.vote.RoleVoter"/>
+				<ref local="iamVoter"  />
+			</list>
+		</constructor-arg>
+	</bean>
+	
+</beans>

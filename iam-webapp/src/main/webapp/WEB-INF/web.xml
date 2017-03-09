@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+	</context-param>
+
+	<!-- IAM Constants for JSPs -->
+	<listener>
+		<listener-class>com.github.cunvoas.iam.security.jsp.IamConstantsListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>IamKeys-ClassName</param-name>
+		<param-value>com.github.cunvoas.iam.web.IamKeys</param-value>
+	</context-param>
+
+
+	<!-- Spring 3.2 CSRF <filter> <filter-name>csrfFilter</filter-name> <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> 
+		<async-supported>true</async-supported> </filter> <filter-mapping> <filter-name>csrfFilter</filter-name> 
+		<url-pattern>/*</url-pattern> </filter-mapping> -->
+	<!-- Spring 3.2 ETag <filter> <filter-name>etagFilter</filter-name> <filter-class>org.springframework.web.filter.ShallowEtagHeaderFilter</filter-class> 
+		</filter> <filter-mapping> <filter-name>etagFilter</filter-name> <url-pattern>/*</url-pattern> 
+		</filter-mapping> -->
+
+	<!-- Spring Security -->
+	<filter>
+		        
+		<filter-name>springSecurityFilterChain</filter-name>
+		        
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		    
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- Encoding Filter -->
+	<filter>
+		<filter-name>encoding-filter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encoding-filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- UPLOAD -->
+	<!-- <filter> <filter-name>multipartFilter</filter-name> <filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class> 
+		</filter> <filter-mapping> <filter-name>multipartFilter</filter-name> <url-pattern>/admin/upload/*</url-pattern> 
+		</filter-mapping> -->
+
+	<!-- WebService Exposure -->
+	<servlet>
+		<servlet-name>cxf</servlet-name>
+		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+		<init-param>
+			<param-name>listings</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>cxf</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- Processes application requests -->
+	<servlet>
+		<servlet-name>spring-mvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value></param-value>
+		</init-param>
+		<init-param>
+			<param-name>listings</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>spring-mvc</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- filtre Lazy Loading -->
+<!--
+	<filter>
+		<filter-name>LazySessionFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+		<init-param>
+			<param-name>sessionFactoryBeanName</param-name>
+			<param-value>sessionFactory</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>LazySessionFilter</filter-name>
+		<url-pattern>/service/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>LazySessionFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+
+    <filter>
+        <filter-name>OpenEntityManagerInViewFilter</filter-name>
+        <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+        <init-param>
+            <param-name>entityManagerFactory</param-name>
+            <param-value>entityManagerFactory</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>OpenEntityManagerInViewFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+-->
+
+	<!-- JSTL -->
+	<!-- Define the basename for a resource bundle for I18N -->
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+		<param-value>frontResources</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
+		<param-value>fr</param-value>
+	</context-param>
+
+
+	<!-- <taglib> <taglib-uri>http://java.sun.com/jstl/fmt</taglib-uri> <taglib-location>/WEB-INF/taglib/fmt.tld</taglib-location> 
+		</taglib> <taglib> <taglib-uri>http://java.sun.com/jstl/core</taglib-uri> 
+		<taglib-location>/WEB-INF/taglib/c.tld</taglib-location> </taglib> <taglib> 
+		<taglib-uri>http://java.sun.com/jstl/functions</taglib-uri> <taglib-location>/WEB-INF/taglib/fn.tld</taglib-location> 
+		</taglib> -->
+
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+		<!-- activation httpOnly -->
+		<!-- <cookie-config> <http-only>true</http-only> <secure>true</secure> 
+			</cookie-config> <tracking-mode>COOKIE</tracking-mode> -->
+	</session-config>
+
+	<security-constraint>
+		<display-name>SECURISATION</display-name>
+		<web-resource-collection>
+			<web-resource-name>Protected Area</web-resource-name>
+			<url-pattern>/*</url-pattern>
+			<!-- HTTP Methods restriction -->
+			<http-method>TRACE</http-method>
+			<http-method>PUT</http-method>
+			<http-method>OPTIONS</http-method>
+			<http-method>DELETE</http-method>
+		</web-resource-collection>
+		<!-- FORCAGE HTTPS <user-data-constraint> <transport-guarantee>CONFIDENTIAL</transport-guarantee> 
+			</user-data-constraint> FORCAGE HTTPS -->
+	</security-constraint>
+
+
+	<resource-ref>
+		<description>Datasource for IAM Database</description>
+		<res-ref-name>jdbc/iam</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+	<!-- Error pages -->
+	<error-page>
+		<error-code>403</error-code>
+		<location>/admin-iam/errors/403.do</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/admin-iam/errors/404.do</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/admin-iam/errors/500.do</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/admin-iam/errors/500.do</location>
+	</error-page>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-app>

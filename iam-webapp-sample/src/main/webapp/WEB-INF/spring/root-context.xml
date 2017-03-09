@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<bean id="propertyPlaceholderConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:cas.properties</value>
+				<value>classpath:iam.properties</value>
+			</list>
+		</property>
+		<property name="ignoreResourceNotFound" value="false" />
+		<property name="localOverride" value="false" />
+		<property name="ignoreUnresolvablePlaceholders" value="false" />
+	</bean>
+
+ 
+ 
+	<context:component-scan base-package="com.github.cunvoas" />
+
+	<!-- spring-mvc -->
+	<import resource="servlet-context.xml" />
+
+	<!-- IAM Capabilities -->
+	<import resource="classpath:spring/spring-security-iam-remote.xml" />
+
+
+	<!-- spring-sec with CAS -->
+	<import resource="spring-cas-iam.xml" />
+
+</beans>

@@ -1,0 +1,252 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.github.cunvoas</groupId>
+		<artifactId>iam_parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version><!-- RELEASE -->
+	</parent>
+	<artifactId>iam-webapp</artifactId>
+	<packaging>war</packaging>
+	<name>${project.artifactId}</name>
+
+	<description>Module d'implémentation de la webapp de la solution IAM.</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.github.cunvoas</groupId>
+			<artifactId>iam-core</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.cunvoas</groupId>
+			<artifactId>iam-security</artifactId>
+			<version>${project.parent.version}</version>
+			<exclusions>
+				<!-- IAM Server do the security himself -->
+				<exclusion>
+					<artifactId>iam-client</artifactId>
+					<groupId>com.github.cunvoas</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Spring web -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring-framework.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+
+		<!-- Security CAS -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-cas-client</artifactId>
+			<version>${spring-security-cas-client.version}</version>
+		</dependency>
+
+		<!-- JSON avec Spring MVC -->
+		<!--
+		<dependency> 
+			<groupId>org.codehaus.jackson</groupId> 
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		 </dependency>
+		  -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		
+		<!-- captcha for hazardous functionnalty 
+		<dependency>
+		    <groupId>com.octo.captcha</groupId>
+		    <artifactId>jcaptcha</artifactId>
+		    <version>1.0</version>
+		</dependency>
+		-->
+<dependency>
+	<groupId>com.fasterxml.jackson.module</groupId>
+	<artifactId>jackson-module-jaxb-annotations</artifactId>
+	<version>2.3.0</version>
+</dependency>
+            
+
+		<!-- Tiles -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>2.2.2</version>
+			<!-- 3.0.3 -->
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jexcelapi</groupId>
+			<artifactId>jxl</artifactId>
+			<version>2.6.12</version>
+<!-- 2.6.12 
+	https://jira.spring.io/browse/SPR-11334
+	java.lang.ArrayIndexOutOfBoundsException
+		 at jxl.write.biff.WritableWorkbookImpl.write(WritableWorkbookImpl.java:726)
+	-->
+		</dependency>
+
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3</version>
+		</dependency>
+
+
+		<!-- CXF -->
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>${cxf.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>asm</artifactId>
+					<groupId>asm</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- <dependency> <groupId>org.apache.cxf</groupId> <artifactId>cxf-rt-frontend-jaxrs</artifactId> 
+			<version>${cxf.version}</version> </dependency> -->
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>${jsp.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>${websocket.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+
+		<dependency>
+		  <groupId>org.slf4j</groupId>
+		 <artifactId>slf4j-log4j12</artifactId>
+		 <version>${slf4j.version}</version>
+		</dependency>
+
+		<!-- Test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring-framework.version}</version>
+			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.3.163</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.2-1003-jdbc4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.directory.server</groupId>
+            <artifactId>apacheds-all</artifactId>
+            <version>1.5.5</version>
+            <scope>test</scope>
+        </dependency>
+	</dependencies>
+
+	<build>
+		<finalName>iam-webapp</finalName>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<profiles>
+	   <profile>
+	       <id>DEPLOY_EXTERN_TOMCAT</id>
+	       <build>
+	           <plugins>
+	                <plugin>
+	                    <groupId>org.apache.maven.plugins</groupId>
+	                    <artifactId>maven-antrun-plugin</artifactId>
+	                    <version>1.7</version>
+	                    <executions>
+	                        <execution>
+	                            <id>copy</id>
+	                            <phase>package</phase>
+	                            <configuration>
+	                                <target>
+										<echo message="tomcat cleanup"/>
+										<delete verbose="true" includeemptydirs="true">
+										  <fileset dir="src" includes="${tomcat.location}/webapps/iam-webapp/*/**" />
+										</delete>
+										<echo message="start tomcat deploy"/>
+										<copy file="${project.build.directory}/iam-webapp.war" tofile="${tomcat.location}/webapps/iam-webapp.war"/>
+										<echo message="end tomcat deploy"/>
+	                                </target>
+	                            </configuration>
+	                            <goals>
+	                                <goal>run</goal> <!-- means antrun:run -->
+	                            </goals>
+	                        </execution>
+	                    </executions>
+	                </plugin>
+	           </plugins>
+	       </build>
+	   </profile>
+	</profiles>
+</project>
