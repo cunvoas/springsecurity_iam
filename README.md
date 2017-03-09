@@ -1,6 +1,8 @@
 iam-module
 ===================
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a0a705af349448a1820392efe3a16701)](https://www.codacy.com/app/cunvoas/springsecurity_iam?utm_source=github.com&utm_medium=referral&utm_content=cunvoas/springsecurity_iam&utm_campaign=badger)
+
 This application implements Identity Access Management (IAM) oriented by business user approach. It is light compared to real IAM solution.
 
 It is inspired from few years experience with Role Management applied on development, integration and maintenance. And the energy lost by changing code, role extentions, testing. 
