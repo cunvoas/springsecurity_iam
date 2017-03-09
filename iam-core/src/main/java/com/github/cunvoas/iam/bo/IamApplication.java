@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.github.cunvoas.iam.util.BoHelper;
 
 
 /**
@@ -13,8 +14,6 @@ public class IamApplication implements Serializable {
 
     private static final long serialVersionUID = -4927622773264470649L;
 
-    private static final int MAX_DISPLAY_LEN = 50;
-    
     private Integer id;
     private String code;
     private IamRessource ressources;
@@ -52,20 +51,7 @@ public class IamApplication implements Serializable {
     
     @JsonIgnore
     public String getDescriptionShort() {
-        String retString = null;
-        if (description!=null && description.length()>MAX_DISPLAY_LEN) {
-            StringBuilder sBuilder = new StringBuilder();
-            sBuilder.append("<span title=\"");
-            sBuilder.append(description.replaceAll("\"", "&quot;"));
-            sBuilder.append("\">");
-            sBuilder.append(description.substring(0, MAX_DISPLAY_LEN));
-            sBuilder.append("...");
-            sBuilder.append("</span>");
-            retString = sBuilder.toString();
-        } else {
-            retString = description;
-        }
-        return retString;
+        return BoHelper.getDescriptionShort(description);
     }
     
     

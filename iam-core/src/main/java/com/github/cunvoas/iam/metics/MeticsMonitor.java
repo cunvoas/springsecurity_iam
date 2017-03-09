@@ -14,7 +14,7 @@ public class MeticsMonitor {
     
     private final JmxReporter reporter = JmxReporter.forRegistry(registry).build();
     
-    private final Histogram resultCounts = registry.histogram(name(ServiceIamRessourceImpl.class, "result-counts"));
+    //private final Histogram resultCounts = registry.histogram(name(ServiceIamRessourceImpl.class, "result-counts"));
     //resultCounts.update(results.size());
     
     

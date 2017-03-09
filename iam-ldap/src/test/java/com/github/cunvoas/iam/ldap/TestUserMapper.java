@@ -30,7 +30,7 @@ public class TestUserMapper {
         
         try {
             while(loop-- >0) {
-                Thread.sleep(1000);;
+                Thread.sleep(1000);
             }
         } catch (InterruptedException e) {
             Assert.fail("Exception occurs");

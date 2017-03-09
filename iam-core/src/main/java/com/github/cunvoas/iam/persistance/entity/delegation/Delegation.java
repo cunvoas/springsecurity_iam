@@ -56,8 +56,6 @@ public class Delegation implements Serializable {
     
     private List<DelegationHistory> historique;
 
-    public Delegation() {
-    }
 
     @Id
     @SequenceGenerator(name="IAM_DELEGATION_ID_GENERATOR", sequenceName="seq_delegation")

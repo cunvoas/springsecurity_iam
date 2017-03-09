@@ -2,9 +2,6 @@ package com.github.cunvoas.iam.security.evaluator;
 
 import java.io.Serializable;
 
-import javax.activity.InvalidActivityException;
-import javax.xml.bind.ValidationException;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.security.access.PermissionEvaluator;
@@ -29,8 +26,8 @@ import com.github.cunvoas.iam.security.helper.IamSecurityHelper;
 public class IamPermissionEvaluator implements PermissionEvaluator {
     
 
-    @Value("${iamCodeApplication}")
-    private String applicationCode;
+//    @Value("${iamCodeApplication}")
+//    private String applicationCode;
     
     /**
      * @see org.springframework.security.access.PermissionEvaluator#hasPermission(org.springframework.security.core.Authentication, java.lang.Object, java.lang.Object)

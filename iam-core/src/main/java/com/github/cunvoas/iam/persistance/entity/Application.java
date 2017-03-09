@@ -35,11 +35,6 @@ public class Application implements Serializable {
     private List<Ressource> ressources;
     private List<Role> roles;
 
-    public Application() {
-    	super();
-    }
-
-
     @Id
     @SequenceGenerator(name="IAM_APPLICATION_ID_GENERATOR", sequenceName="seq_application")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="IAM_APPLICATION_ID_GENERATOR")

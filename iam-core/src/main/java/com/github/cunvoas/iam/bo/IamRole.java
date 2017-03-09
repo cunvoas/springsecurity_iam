@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.github.cunvoas.iam.util.BoHelper;
 
 @XmlRootElement
 public class IamRole  implements Serializable {
@@ -17,7 +18,7 @@ public class IamRole  implements Serializable {
     private String description;
     private IamRessource ressource;
     
-    // VextoreCode, Value in string
+    // VectorCode, Value in string
     private transient Map<String, String> ressourceValues;
 
     /**
@@ -31,7 +32,6 @@ public class IamRole  implements Serializable {
 
     /**
      * Setter for id.
-     * 
      * @param id
      *            the id to set
      */
@@ -41,7 +41,6 @@ public class IamRole  implements Serializable {
 
     /**
      * Getter for commentaire.
-     * 
      * @return the commentaire
      */
     public String getCommentaire() {
@@ -50,7 +49,6 @@ public class IamRole  implements Serializable {
 
     /**
      * Setter for commentaire.
-     * 
      * @param commentaire
      *            the commentaire to set
      */
@@ -60,41 +58,12 @@ public class IamRole  implements Serializable {
 
     /**
      * Getter for description.
-     * 
      * @return the description
      */
     public String getDescription() {
         return description;
     }
-    
-    private static final int MAX_DISPLAY_LEN = 50;
-    @JsonIgnore
-    public String getDescriptionShort() {
-        String retString = null;
-        if (description!=null && description.length()>MAX_DISPLAY_LEN) {
-            StringBuilder sBuilder = new StringBuilder();
-            sBuilder.append("<span title=\"");
-            sBuilder.append(description.replaceAll("\"", "&quot;"));
-            sBuilder.append("\">");
-            sBuilder.append(description.substring(0, MAX_DISPLAY_LEN));
-            sBuilder.append("...");
-            sBuilder.append("</span>");
-            retString = sBuilder.toString();
-        } else {
-            retString = description;
-        }
-        return retString;
-    }
-
-    @JsonIgnore
-    public String getCodeAndDescription() {
-         StringBuilder sBuilder = new StringBuilder();
-         sBuilder.append(getCode());
-         sBuilder.append(" - ");
-         sBuilder.append(getDescription());
-         return sBuilder.toString();
-    }
-    
+        
     /**
      * Setter for description.
      * 
@@ -124,6 +93,58 @@ public class IamRole  implements Serializable {
         this.ressource = ressource;
     }
 
+
+    /**
+     * Getter for code.
+     * @return the code
+     */
+    public String getCode() {
+        return code;
+    }
+
+    /**
+     * Setter for code.
+     * @param code the code to set
+     */
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    /**
+     * Getter for ressourceValues.
+     * @return the ressourceValues
+     */
+    public Map<String, String> getRessourceValues() {
+        return ressourceValues;
+    }
+
+    /**
+     * Setter for ressourceValues.
+     * @param ressourceValues the ressourceValues to set
+     */
+    public void setRessourceValues(Map<String, String> ressourceValues) {
+        this.ressourceValues = ressourceValues;
+    }
+    /**
+     * @return Short Description
+     */
+    @JsonIgnore
+    public String getDescriptionShort() {
+        return BoHelper.getDescriptionShort(description);
+    }
+
+    /**
+     * @return Code And Description
+     */
+    @JsonIgnore
+    public String getCodeAndDescription() {
+         StringBuilder sBuilder = new StringBuilder();
+         sBuilder.append(getCode());
+         sBuilder.append(" - ");
+         sBuilder.append(getDescription());
+         return sBuilder.toString();
+    }
+    
     /**
      * @see java.lang.Object#hashCode()
      */
@@ -158,38 +179,6 @@ public class IamRole  implements Serializable {
             return false;
         }
         return true;
-    }
-
-    /**
-     * Getter for code.
-     * @return the code
-     */
-    public String getCode() {
-        return code;
-    }
-
-    /**
-     * Setter for code.
-     * @param code the code to set
-     */
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    /**
-     * Getter for ressourceValues.
-     * @return the ressourceValues
-     */
-    public Map<String, String> getRessourceValues() {
-        return ressourceValues;
-    }
-
-    /**
-     * Setter for ressourceValues.
-     * @param ressourceValues the ressourceValues to set
-     */
-    public void setRessourceValues(Map<String, String> ressourceValues) {
-        this.ressourceValues = ressourceValues;
     }
 
 }
