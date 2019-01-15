@@ -118,7 +118,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>2.2.1</version>
+                <version>3.0.1</version><!--2.2.1-->
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -155,7 +155,7 @@
 		<dependency>
 		    <groupId>org.owasp</groupId>
 		    <artifactId>dependency-check-maven</artifactId>
-		    <version>1.2.9</version>
+		    <version>4.0.2</version>
 		</dependency>
 
 		<!-- Logger -->
